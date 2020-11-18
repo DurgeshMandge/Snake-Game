@@ -5,7 +5,7 @@
 | NPM           |       Name           |
 | ------------- |----------------------|
 | 140810190009  | Farhan Gunadi        |
-| 140810190025  | Abdurahman mannam    |
+| 140810190025  | Abdurahman mannan    |
 | 140810190037  | Bagas Adi Firdaus    |
 
 ## Sprint Backlog Keseluruhan 
