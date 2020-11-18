@@ -1,5 +1,5 @@
 # Sprint Planning 
-| dd/mm/yyyy
+| 18/11/2020
 
 ### Team (Insert your name)
 | NPM           | Name                          |
@@ -24,8 +24,10 @@
 ## Sprint Backlog Plan (Sprint 1)
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
-| 1.1 | Preparing the x | Jane Doe | 
-| 2.2 | Make the x | John Doe | 
+| 1.1 | Membuat Board Game | Igun | On Progress |
+| 2.2 | Membuat Objek Ular dan Menempatkan di tengah Board       | Igun | On Progress |
+| 3.3 | Membuat movement dari Objek Ular                         | Rahman | On Progress |
+| 4.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | Bagas | On Progress |
 
 ## Retrospective 
 
