@@ -4,14 +4,14 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 [Challenge Guidelines](challenge-guideline.md)
 
-**Please create a description for this project here**
+Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh memanjang, dengan garis itu sendiri yang menjadi rintangan utama.
 
 ## Credits
-| NPM           | Name        |
-| ------------- |-------------|
-| 140810xx00xx  | John Doe    |
-| 140810xx00xx  | Jane Doe    |
-| 140810xx00xx  | Lorem Ipsum |
+| NPM           | Name                        |
+| ------------- | --------------------------- |
+| 140810190009  | Farhan Gunadi               |
+| 140810190025  | Aghniya Abdurrahman Mannan  |
+| 140810190037  | Bagas Adi Firdaus           |
 
 ## Change log
 - **[Sprint Planning](changelog/sprint-planning.md) - (planning date)** 
