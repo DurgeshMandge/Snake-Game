@@ -12,7 +12,7 @@
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
 | 1.1 | Membuat Board Game | Jane Doe | 
-| 2.2 | Membuat Objek Ular dan Menempatkan di tengah Board       | John Doe |  
+| 2.2 | Membuat Objek Ular dan Menempatkannya di Board       | John Doe |  
 | 3.3 | Membuat movement dari Objek Ular                         | XXX |  
 | 4.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | YYY |
 | 5.5 | Membuat sistem scoring | ZZZ |  
@@ -24,10 +24,10 @@
 ## Sprint Backlog Plan (Sprint 1)
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
-| 1.1 | Membuat Board Game | Igun | On Progress |
-| 2.2 | Membuat Objek Ular dan Menempatkan di tengah Board       | Igun | On Progress |
-| 3.3 | Membuat movement dari Objek Ular                         | Rahman | On Progress |
-| 4.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | Bagas | On Progress |
+| 1.1 | Membuat Board Game | Igun | 
+| 2.2 | Membuat Objek Ular dan Menempatkannya di Board       | Igun | 
+| 3.3 | Membuat movement dari Objek Ular                         | Rahman | 
+| 4.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | Bagas | 
 
 ## Retrospective 
 

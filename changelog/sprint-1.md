@@ -1,24 +1,29 @@
 # Scrum Report (Sprint 1)
-| From dd/mm/yyyy to dd/mm/yyyy
+| From 18/11/2020 to 24/11/2020
 
 ## Team (Insert your name)
-| NPM           | Name        |
-| ------------- |-------------|
-| 140810xx00xx  | John Doe    |
-| 140810xx00xx  | Jane Doe    |
-| 140810xx00xx  | Lorem Ipsum |
+| NPM           | Name                          |
+| ------------- |-------------------------------|
+| 140810190009  | Farhan Gunadi                 |
+| 140810190025  | Aghniya Abdurrahman Mannan    |
+| 140810190037  | Bagas Adi Firdaus             |
 
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| n             | n             |
+| Membuat Board Game (1.1)  | Membuat Board Game (1.1)  |
+| Membuat Objek Ular dan Menempatkannya di Board (2.2) | Membuat Objek Ular dan Menempatkannya di Board (2.2) |
+| Membuat movement dari Objek Ular (3.3) | Membuat movement dari Objek Ular (3.3) |
+| Membuat Objek Apple dan Menempatkan di Board secara acak (4.4) | Membuat Objek Apple dan Menempatkan di Board secara acak (4.4) |
 
 ## Sprint 1 Backlog
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 1.1 | Preparing the x | Jane Doe | DONE |
-| 1.2 | Make the x | John Doe | FAILED |
+| 1.1 | Membuat Board Game | Igun | DONE |
+| 2.2 | Membuat Objek Ular dan Menempatkannya di Board       | Igun | DONE |
+| 3.3 | Membuat movement dari Objek Ular                         | Rahman | ON PROGRESS |
+| 4.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | Bagas | DONE |
 
 ## Retrospective 
 

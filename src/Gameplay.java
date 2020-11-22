@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -7,6 +9,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,6 +36,21 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int delay = 100;
     private ImageIcon snakeBody;
 
+    // Untuk posisi apple yang akan muncul secara random
+    private int[] applexPos={25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575
+        ,600,625,650,675,700,725,750,775,800,825,850};
+        private int[] appleyPos={75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625};
+
+    // Buat gambar apple
+    private ImageIcon appleImage;
+
+    // Untuk generate random number
+    private Random random = new Random();
+
+    private int xPos = random.nextInt(34);
+    private int yPos = random.nextInt(23);
+
+    // Buat tittle game 
     private ImageIcon titleImage;
 
     public Gameplay() {
@@ -87,6 +105,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 snakeBody.paintIcon(this, g, snakexLength[i], snakeyLength[i]);
             }
         }
+
+        appleImage = new ImageIcon("images/apple.png");
+
+        // Jika snakeya makan apllenya
+        if ((applexPos[xPos]) == snakexLength[0] && (appleyPos[yPos] == snakeyLength[0])){
+            lengthOfSnake++;
+            xPos = random.nextInt(34);
+            yPos = random.nextInt(23);
+        }
+
+        appleImage.paintIcon(this, g, applexPos[xPos], appleyPos[yPos]);
 
         g.dispose();
     }
