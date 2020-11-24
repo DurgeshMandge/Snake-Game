@@ -22,7 +22,7 @@
 | --- | ---------- | ------- | ------ |
 | 1.1 | Membuat Board Game | Igun | DONE |
 | 2.2 | Membuat Objek Ular dan Menempatkannya di Board       | Igun | DONE |
-| 3.3 | Membuat movement dari Objek Ular                         | Rahman | ON PROGRESS |
+| 3.3 | Membuat movement dari Objek Ular                         | Rahman | DONE |
 | 4.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | Bagas | DONE |
 
 ## Retrospective 

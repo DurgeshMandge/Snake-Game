@@ -123,7 +123,113 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        timer.start();
 
+        //untuk pergerakan ular
+        //menggerakkan ular ke kanan
+        if (right){
+            //pindahkan posisi head ke index selanjutnya
+            for (int i = lengthOfSnake-1 ; i>=0 ; i--)
+            {
+                //pindahkan posisi snakeyLength
+                snakeyLength[i+1] = snakeyLength[i];
+            }
+            //
+            for (int i = lengthOfSnake-1 ; i>=0 ; i--){
+                //pindahkan posisi snakexLength
+                if (i==0){
+                    snakexLength[i] = snakexLength[i] + 25;
+                }
+                else{
+                    snakexLength[i] = snakexLength[i-1];
+                }
+                //jika sudah lewat ujung kanan
+                if (snakexLength[i] > 850){
+                    //munculkan di ujung kiri
+                    snakexLength[i] = 25;
+                }
+            }
+            //panggil kembali method paint secara otomatis
+            repaint();
+        }
+        //menggerakkan ular ke kiri
+        if (left){
+           //pindahkan posisi head ke index selanjutnya
+           for (int i = lengthOfSnake-1 ; i>=0 ; i--)
+           {
+               //pindahkan posisi snakeyLength
+               snakeyLength[i+1] = snakeyLength[i];
+           }
+           //
+           for (int i = lengthOfSnake-1 ; i>=0 ; i--){
+               //pindahkan posisi snakexLength
+               if (i==0){
+                   snakexLength[i] = snakexLength[i] - 25;
+               }
+               else{
+                   snakexLength[i] = snakexLength[i-1];
+               }
+               //jika sudah lewat ujung kiri
+               if (snakexLength[i] < 25){
+                   //munculkan di ujung kanan
+                   snakexLength[i] = 850;
+               }
+           }
+           //panggil kembali method paint secara otomatis
+           repaint(); 
+        }
+        //menggerakkan ular ke atas
+        if (up){
+            //pindahkan posisi head ke index selanjutnya
+            for (int i = lengthOfSnake-1 ; i>=0 ; i--)
+            {
+                //pindahkan posisi snakexLength
+                snakexLength[i+1] = snakexLength[i];
+            }
+            //
+            for (int i = lengthOfSnake-1 ; i>=0 ; i--){
+                //pindahkan posisi snakeyLength
+                if (i==0){
+                    snakeyLength[i] = snakeyLength[i] - 25;
+                }
+                else{
+                    snakeyLength[i] = snakeyLength[i-1];
+                }
+                //jika sudah lewat ujung atas
+                if (snakeyLength[i] < 75){
+                    //munculkan di ujung bawah
+                    snakeyLength[i] = 625;
+                }
+            }
+            //panggil kembali method paint secara otomatis
+            repaint();
+        }
+        //menggerakkan ular ke bawah
+        if (down){
+            //pindahkan posisi head ke index selanjutnya
+            for (int i = lengthOfSnake-1 ; i>=0 ; i--)
+            {
+                //pindahkan posisi snakexLength
+                snakexLength[i+1] = snakexLength[i];
+            }
+            //
+            for (int i = lengthOfSnake-1 ; i>=0 ; i--){
+                //pindahkan posisi snakeyLength
+                if (i==0){
+                    snakeyLength[i] = snakeyLength[i] + 25;
+                }
+                else{
+                    snakeyLength[i] = snakeyLength[i-1];
+                }
+                //jika sudah lewat ujung bawah
+                if (snakeyLength[i] > 625){
+                    //munculkan di ujung atas
+                    snakeyLength[i] = 75;
+                }
+            }
+            //panggil kembali method paint secara otomatis
+            repaint();
+        }
     }
 
     @Override
@@ -135,7 +241,63 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
-
+        
+        //jika user pencet right arrow
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+            moves++;
+            right=true;
+            if(!left){
+                right=true;
+            }
+            else{
+                right=false;
+                left=true;
+            }
+            up=false;
+            down=false;
+        }
+        //jika user pencet left arrow
+        if (e.getKeyCode() == KeyEvent.VK_LEFT){
+            moves++;
+            left=true;
+            if(!right){
+                left=true;
+            }
+            else{
+                left=false;
+                right=true;
+            }
+            up=false;
+            down=false;
+        }
+        //jika user pencet up arrow
+        if (e.getKeyCode() == KeyEvent.VK_UP){
+            moves++;
+            up=true;
+            if(!down){
+                up=true;
+            }
+            else{
+                up=false;
+                down=true;
+            }
+            left=false;
+            right=false;
+        }
+        //jika user pencet down arrow
+        if (e.getKeyCode() == KeyEvent.VK_DOWN){
+            moves++;
+            down=true;
+            if(!up){
+                down=true;
+            }
+            else{
+                down=false;
+                up=true;
+            }
+            left=false;
+            right=false;
+        }
     }
 
     @Override
