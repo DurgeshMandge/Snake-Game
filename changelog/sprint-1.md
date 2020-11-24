@@ -27,10 +27,11 @@
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas. Lorem ipsum dolor sit amet
+Sprint kemarin dianggap oke dan berjalan dengan baik.
 
 ## Next Sprint Backlog (Sprint 2)
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
-| 2.1 | Preparing the x | Jane Doe | 
-| 2.2 | Make the x | John Doe | 
+| 5.5 | Membuat sistem scoring | Bagas |  
+| 6.6 | Membuat kondisi game berakhir | Rahman |
+| 7.7 | Membuat window untuk menampilkan 10 Score terbaik | Igun |  

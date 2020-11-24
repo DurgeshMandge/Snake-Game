@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Gameplay extends JPanel implements KeyListener, ActionListener {
+public class SnakeGame extends JPanel implements KeyListener, ActionListener {
     // menetukan panjang ular
     private int[] snakexLength = new int[750];
     private int[] snakeyLength = new int[750];
@@ -29,7 +29,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // buat gambar kepala
     private ImageIcon snakeHead;
 
-    private int lengthOfSnake = 3;
+    private int lengthOfSnake = 5;
     private int moves = 0;
 
     private Timer timer;
@@ -53,7 +53,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Buat tittle game 
     private ImageIcon titleImage;
 
-    public Gameplay() {
+    public SnakeGame() {
 
         // buat pas mulai gamenya
         addKeyListener(this);
@@ -66,13 +66,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public void paint(Graphics g) {
         // cek jika game udah dimulai
         if (moves == 0) {
-            snakexLength[2] = 50;
-            snakexLength[1] = 75;
-            snakexLength[0] = 100;
+            snakexLength[2] = 400;
+            snakexLength[1] = 425;
+            snakexLength[0] = 450;
 
-            snakeyLength[2] = 100;
-            snakeyLength[1] = 100;
-            snakeyLength[0] = 100;
+            snakeyLength[2] = 350;
+            snakeyLength[1] = 350;
+            snakeyLength[0] = 350;
         }
 
         // border judul
@@ -85,7 +85,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // border untuk gameplay
         g.setColor(Color.WHITE);
-        g.fillRect(24, 74, 851, 577);
+        g.fillRect(24, 74, 851, 576);
 
         // background gameplay
         g.setColor(Color.black);
@@ -245,7 +245,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         //jika user pencet right arrow
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
             moves++;
-            right=true;
             if(!left){
                 right=true;
             }
@@ -259,7 +258,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         //jika user pencet left arrow
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
             moves++;
-            left=true;
             if(!right){
                 left=true;
             }
@@ -273,7 +271,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         //jika user pencet up arrow
         if (e.getKeyCode() == KeyEvent.VK_UP){
             moves++;
-            up=true;
             if(!down){
                 up=true;
             }
@@ -287,7 +284,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         //jika user pencet down arrow
         if (e.getKeyCode() == KeyEvent.VK_DOWN){
             moves++;
-            down=true;
             if(!up){
                 down=true;
             }
