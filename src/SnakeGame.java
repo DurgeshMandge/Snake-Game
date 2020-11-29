@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Font;
 
 public class SnakeGame extends JPanel implements KeyListener, ActionListener {
     // menetukan panjang ular
@@ -116,6 +117,29 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener {
         }
 
         appleImage.paintIcon(this, g, applexPos[xPos], appleyPos[yPos]);
+        
+        //Cek jika kepala menabrak badan
+        for (int i=1; i<lengthOfSnake;i++){
+            //jika tabrakan terjadi
+            if (snakexLength[i]==snakexLength[0] && snakeyLength[i]==snakeyLength[0]){
+                //membuat ular jadi tidak bisa bergerak
+                right=false;
+                left=false;
+                up=false;
+                down=false;
+                
+
+                //menampilkan tulisan "Game Over!"
+                g.setColor(Color.RED);
+                g.setFont(new Font("Courier New", Font.BOLD, 50));
+                g.drawString("Game Over!", 300, 300);
+
+                //menampilkan tulisan "Press Spacebar to restart!"
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Courier New", Font.BOLD, 20));
+                g.drawString("Press Spacebar to restart!", 300, 340);
+            }
+        }
 
         g.dispose();
     }
@@ -240,8 +264,14 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
         
+        // Jika user pencet spacebar
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            moves = 0;
+            lengthOfSnake = 5;
+            repaint();
+        }
+
         //jika user pencet right arrow
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
             moves++;

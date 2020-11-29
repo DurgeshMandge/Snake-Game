@@ -1,29 +1,28 @@
 # Scrum Report (Sprint 2)
-| From 25/11/2020 to 02/12/2020
+| From dd/mm/yyyy to dd/mm/yyyy
 
 ## Team (Insert your name)
 | NPM           | Name        |
 | ------------- |-------------|
-| 140810190009  | Farhan Gunadi    |
-| 140810190025  | Aghniya Abdurrahman Mannan    |
-| 140810190037  | Bagas Adi Firdaus |
+| 140810xx00xx  | John Doe    |
+| 140810xx00xx  | Jane Doe    |
+| 140810xx00xx  | Lorem Ipsum |
 
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| 7             | 5             |
+| n             | n             |
 
 ## Sprint 2 Backlog
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 2.1 | Membuat sistem scoring | Bagas | On Progress | 
-| 2.2 | Membuat kondisi game berakhir | Rahman | Done |
-| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | Igun | On Progress |
+| 2.1 | Preparing the x | Jane Doe | DONE |
+| 2.2 | Make the x | John Doe | FAILED |
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas.
+Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas. Lorem ipsum dolor sit amet
 
 ## Next Sprint Backlog (Sprint 3)
 | ID  | Title/Desc | Asignee | 
