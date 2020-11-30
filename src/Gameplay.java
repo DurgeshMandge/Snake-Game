@@ -56,7 +56,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private ImageIcon titleImage;
 
     // Buat score game
-    private int score = 0;
+    Score score = new Score();
 
     boolean death = false;
 
@@ -105,7 +105,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Tampilin Score
         g.setColor(Color.white);
         g.setFont(new Font("Helvetica", Font.PLAIN, 16));
-        g.drawString("Scores : " + score, 760, 42);
+        g.drawString("Scores : " + score.getScore(), 760, 42);
 
         // instansiasi gambar buat kepala ular
         snakeHead = new ImageIcon("images/snakeHead.png");
@@ -127,7 +127,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Jika snakeya makan apllenya
         if ((applexPos[xPos]) == snakexLength[0] && (appleyPos[yPos] == snakeyLength[0])) {
             lengthOfSnake++;
-            score++;
+            score.increaseScore();
             xPos = random.nextInt(34);
             yPos = random.nextInt(23);
         }
@@ -148,26 +148,35 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         for (int i = 1; i < lengthOfSnake; i++) {
             // jika tabrakan terjadi
             if (snakexLength[i] == snakexLength[0] && snakeyLength[i] == snakeyLength[0]) {
-                // membuat ular jadi tidak bisa bergerak
-                right = false;
-                left = false;
-                up = false;
-                down = false;
-                death = true;
-
-                // menampilkan tulisan "Game Over!"
-                g.setColor(Color.RED);
-                g.setFont(new Font("Courier New", Font.BOLD, 50));
-                g.drawString("Game Over!", 300, 300);
-
-                // menampilkan tulisan "Press Spacebar to restart!"
-                g.setColor(Color.WHITE);
-                g.setFont(new Font("Courier New", Font.BOLD, 20));
-                g.drawString("Press Spacebar to restart!", 300, 340);
+                // panggil function dead
+                dead();
             }
         }
 
+        //Cek jika mati
+        if (death){
+            // menampilkan tulisan "Game Over!"
+            g.setColor(Color.RED);
+            g.setFont(new Font("Courier New", Font.BOLD, 50));
+            g.drawString("Game Over!", 300, 300);
+
+            // menampilkan tulisan "Press Spacebar to restart!"
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Courier New", Font.BOLD, 20));
+            g.drawString("Press Spacebar to restart!", 300, 340);
+        }
+
         g.dispose();
+    }
+
+    //function mati biar ga ngulang nulis kode berkali-kali
+    public void dead(){
+        //membuat ular tidak bisa bergerak
+        right = false;
+        left = false;
+        up = false;
+        down = false;
+        death = true;
     }
 
     @Override
@@ -193,8 +202,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung kanan
                 if (snakexLength[i] > 850) {
-                    // munculkan di ujung kiri
-                    snakexLength[i] = 25;
+                    // maot
+                    dead();
                 }
             }
             // panggil kembali method paint secara otomatis
@@ -217,8 +226,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung kiri
                 if (snakexLength[i] < 25) {
-                    // munculkan di ujung kanan
-                    snakexLength[i] = 850;
+                    // maot
+                    dead();
                 }
             }
             // panggil kembali method paint secara otomatis
@@ -241,8 +250,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung atas
                 if (snakeyLength[i] < 75) {
-                    // munculkan di ujung bawah
-                    snakeyLength[i] = 625;
+                    // maot
+                    dead();
                 }
             }
             // panggil kembali method paint secara otomatis
@@ -265,8 +274,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung bawah
                 if (snakeyLength[i] > 625) {
-                    // munculkan di ujung atas
-                    snakeyLength[i] = 75;
+                    // maot
+                    dead();
                 }
             }
             // panggil kembali method paint secara otomatis
@@ -293,7 +302,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             if (death) {
                 moves = 0;
                 lengthOfSnake = 5;
-                score = 0;
+                score.resetScore();
                 repaint();
                 death = false;
             }
