@@ -132,7 +132,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             yPos = random.nextInt(23);
         }
 
-        appleImage.paintIcon(this, g, applexPos[xPos], appleyPos[yPos]);
+        // Sebelum user mencet spacebar, apllenya ga keliatan
+        if (moves != 0) {
+            appleImage.paintIcon(this, g, applexPos[xPos], appleyPos[yPos]);
+        }
+
+        // menampilkan tulisan "Press Spacebar to Start the Game!"
+        if (moves == 0) {
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Courier New", Font.BOLD, 30));
+            g.drawString("Press Spacebar to Start the Game!", 150, 300);
+        }
 
         // Cek jika kepala menabrak badan
         for (int i = 1; i < lengthOfSnake; i++) {
@@ -280,12 +290,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 right = true;
             }
             // Untuk restart game abis mati
-            if (this.death) {
+            if (death) {
                 moves = 0;
                 lengthOfSnake = 5;
                 score = 0;
                 repaint();
-                this.death = false;
+                death = false;
             }
         }
 
