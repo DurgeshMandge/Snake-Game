@@ -14,15 +14,13 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
 | 140810190037  | Bagas Adi Firdaus           |
 
 ## Change log
-- **[Sprint Planning](changelog/sprint-planning.md) - (18 November 2020)** 
-   - Bagi tugas untuk minggu pertama
-   - Buat Sprint 1
+- **[Sprint Planning](changelog/sprint-planning.md) - (planning date)** 
+   -  Short changes 1
+   - Short changes 2
 
-- **[Sprint 1](changelog/sprint-1.md) - (18 November 2020 - 24 November 2020)** 
-   - Membuat board game
-   - Membuat objek ular dan menempatkannya di board  
-   - Membuat objek apple dan menempatkannya di board secara acak  
-   - Membuat movement dari objek ular
+- **[Sprint 1](changelog/sprint-1.md) - (date from x until x)** 
+   - Short changes 1
+   - Short changes 2
 
 - **[Sprint 2](changelog/sprint-2.md) - (date from x until x)** 
    - Short changes 1
@@ -34,13 +32,11 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
 
 ## Running The App
 
--  run the Gameplay.java
--  run the SnakeGame.java
+TO;DO with steps
 
 ## Classes Used
 
--  Gameplay.java
--  SnakeGame.java
+TO;DO
 
 UML image here
 
