@@ -230,6 +230,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung kanan
                 if (snakexLength[0] > 637) {
+                    //pindahkan kepala kembali ke dalam board
+                    snakexLength[0] -= 6;
                     // maot
                     dead();
                 }
@@ -254,6 +256,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung kiri
                 if (snakexLength[0] < 25) {
+                    //pindahkan kepala kembali ke dalam board
+                    snakexLength[0] += 6;
                     // maot
                     dead();
                 }
@@ -278,6 +282,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung atas
                 if (snakeyLength[0] < 73) {
+                    //pindahkan kepala kembali ke dalam board
+                    snakeyLength[0] += 6;
                     // maot
                     dead();
                 }
@@ -302,6 +308,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung bawah
                 if (snakeyLength[0] > 679) {
+                    //pindahkan kepala kembali ke dalam board
+                    snakeyLength[0] -= 6;
                     // maot
                     dead();
                 }
