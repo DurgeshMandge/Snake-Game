@@ -34,14 +34,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int moves = 0;
 
     private Timer timer;
-    private int delay = 100;
+    private int delay = 50;
     private ImageIcon snakeBody;
 
     // Untuk posisi apple yang akan muncul secara random
-    private int[] applexPos = { 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450,
-            475, 500, 525, 550, 575, 600, 625, 650, 675, 700, 725, 750, 775, 800, 825, 850 };
-    private int[] appleyPos = { 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500,
-            525, 550, 575, 600, 625 };
+    private int[] applexPos = { 25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205,
+            215, 225, 235, 245, 255, 265, 275, 285, 295, 305, 315, 325, 335, 345, 355, 365, 375, 385, 395, 405, 415,
+            425, 435, 445, 455, 465, 475, 485, 495, 505, 515, 525, 535, 545, 555, 565, 575, 585, 595, 605, 615, 625,
+            635, 645, 655, 665, 675, 685, 695, 705, 715, 725, 735, 745, 755, 765, 775, 785, 795, 805, 815, 825, 835,
+            845, 855 };
+    private int[] appleyPos = { 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205, 215, 225, 235, 245,
+            255, 265, 275, 285, 295, 305, 315, 325, 335, 345, 355, 365, 375, 385, 395, 405, 415, 425, 435, 445, 455,
+            465, 475, 485, 495, 505, 515, 525, 535, 545, 555, 565, 575, 585, 595, 605, 615, 625 };
 
     // Buat gambar apple
     private ImageIcon appleImage;
@@ -49,8 +53,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Untuk generate random number
     private Random random = new Random();
 
-    private int xPos = random.nextInt(34);
-    private int yPos = random.nextInt(23);
+    private int xPos = random.nextInt(84);
+    private int yPos = random.nextInt(56);
 
     // Buat tittle game
     private ImageIcon titleImage;
@@ -73,22 +77,33 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public void paint(Graphics g) {
         // cek jika game udah dimulai
         if (moves == 0) {
-            snakexLength[4] = 350;
-            snakexLength[3] = 375;
-            snakexLength[2] = 400;
-            snakexLength[1] = 425;
-            snakexLength[0] = 450;
+            // snakexLength[4] = 350;
+            // snakexLength[3] = 375;
+            // snakexLength[2] = 400;
+            // snakexLength[1] = 425;
+            // snakexLength[0] = 450;
 
-            snakeyLength[4] = 350;
-            snakeyLength[3] = 350;
-            snakeyLength[2] = 350;
-            snakeyLength[1] = 350;
-            snakeyLength[0] = 350;
+            // snakeyLength[4] = 350;
+            // snakeyLength[3] = 350;
+            // snakeyLength[2] = 350;
+            // snakeyLength[1] = 350;
+            // snakeyLength[0] = 350;
+            snakexLength[4] = 355;
+            snakexLength[3] = 365;
+            snakexLength[2] = 375;
+            snakexLength[1] = 385;
+            snakexLength[0] = 395;
+
+            snakeyLength[4] = 355;
+            snakeyLength[3] = 355;
+            snakeyLength[2] = 355;
+            snakeyLength[1] = 355;
+            snakeyLength[0] = 355;
         }
 
         // border judul
         g.setColor(Color.WHITE);
-        g.drawRect(24, 10, 851, 55);
+        g.drawRect(24, 10, 852, 55);
 
         // judul
         titleImage = new ImageIcon("images/title.png");
@@ -96,11 +111,19 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // border untuk gameplay
         g.setColor(Color.WHITE);
-        g.fillRect(24, 74, 852, 577);
+        g.drawRect(24, 74, 852, 571);
 
         // background gameplay
         g.setColor(Color.black);
-        g.fillRect(25, 75, 850, 575);
+        g.fillRect(25, 75, 852, 570);
+
+        // border untuk leaderboard
+        g.setColor(Color.WHITE);
+        g.drawRect(894, 9, 292, 641);
+
+        // background leaderboard
+        g.setColor(Color.black);
+        g.fillRect(895, 10, 290, 640);
 
         // Tampilin Score
         g.setColor(Color.white);
@@ -108,28 +131,28 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.drawString("Scores : " + score.getScore(), 760, 42);
 
         // instansiasi gambar buat kepala ular
-        snakeHead = new ImageIcon("images/snakeHead.png");
+        snakeHead = new ImageIcon("images/snakeHead4.png");
         snakeHead.paintIcon(this, g, snakexLength[0], snakeyLength[0]);
 
         for (int i = 0; i < lengthOfSnake; i++) {
             if (i == 0 && (right || left || up || down)) {
-                snakeHead = new ImageIcon("images/snakeHead.png");
+                snakeHead = new ImageIcon("images/snakeHead4.png");
                 snakeHead.paintIcon(this, g, snakexLength[i], snakeyLength[i]);
             }
             if (i != 0) {
-                snakeBody = new ImageIcon("images/snakeimage.png");
+                snakeBody = new ImageIcon("images/snakeimage4.png");
                 snakeBody.paintIcon(this, g, snakexLength[i], snakeyLength[i]);
             }
         }
 
-        appleImage = new ImageIcon("images/apple.png");
+        appleImage = new ImageIcon("images/apple4.png");
 
         // Jika snakeya makan apllenya
         if ((applexPos[xPos]) == snakexLength[0] && (appleyPos[yPos] == snakeyLength[0])) {
             lengthOfSnake++;
             score.increaseScore();
-            xPos = random.nextInt(34);
-            yPos = random.nextInt(23);
+            xPos = random.nextInt(84);
+            yPos = random.nextInt(57);
         }
 
         // Sebelum user mencet spacebar, apllenya ga keliatan
@@ -153,8 +176,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             }
         }
 
-        //Cek jika mati
-        if (death){
+        // Cek jika mati
+        if (death) {
             // menampilkan tulisan "Game Over!"
             g.setColor(Color.RED);
             g.setFont(new Font("Courier New", Font.BOLD, 50));
@@ -169,9 +192,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.dispose();
     }
 
-    //function mati biar ga ngulang nulis kode berkali-kali
-    public void dead(){
-        //membuat ular tidak bisa bergerak
+    // function mati biar ga ngulang nulis kode berkali-kali
+    public void dead() {
+        // membuat ular tidak bisa bergerak
         right = false;
         left = false;
         up = false;
@@ -196,12 +219,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             for (int i = lengthOfSnake - 1; i >= 0; i--) {
                 // pindahkan posisi snakexLength
                 if (i == 0) {
-                    snakexLength[i] = snakexLength[i] + 25;
+                    snakexLength[i] = snakexLength[i] + 10;
                 } else {
                     snakexLength[i] = snakexLength[i - 1];
                 }
                 // jika sudah lewat ujung kanan
-                if (snakexLength[i] > 850) {
+                if (snakexLength[i] > 855) {
                     // maot
                     dead();
                 }
@@ -220,7 +243,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             for (int i = lengthOfSnake - 1; i >= 0; i--) {
                 // pindahkan posisi snakexLength
                 if (i == 0) {
-                    snakexLength[i] = snakexLength[i] - 25;
+                    snakexLength[i] = snakexLength[i] - 10;
                 } else {
                     snakexLength[i] = snakexLength[i - 1];
                 }
@@ -244,7 +267,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             for (int i = lengthOfSnake - 1; i >= 0; i--) {
                 // pindahkan posisi snakeyLength
                 if (i == 0) {
-                    snakeyLength[i] = snakeyLength[i] - 25;
+                    snakeyLength[i] = snakeyLength[i] - 10;
                 } else {
                     snakeyLength[i] = snakeyLength[i - 1];
                 }
@@ -268,7 +291,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             for (int i = lengthOfSnake - 1; i >= 0; i--) {
                 // pindahkan posisi snakeyLength
                 if (i == 0) {
-                    snakeyLength[i] = snakeyLength[i] + 25;
+                    snakeyLength[i] = snakeyLength[i] + 10;
                 } else {
                     snakeyLength[i] = snakeyLength[i - 1];
                 }
