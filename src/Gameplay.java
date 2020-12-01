@@ -34,7 +34,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int moves = 0;
 
     private Timer timer;
-    private int delay = 50;
+    private int delay = 200;
     private ImageIcon snakeBody;
 
     // Untuk posisi apple yang akan muncul secara random
@@ -111,11 +111,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // border untuk gameplay
         g.setColor(Color.WHITE);
-        g.drawRect(24, 74, 852, 571);
+        g.drawRect(24, 74, 851, 571);
 
         // background gameplay
         g.setColor(Color.black);
-        g.fillRect(25, 75, 852, 570);
+        g.fillRect(25, 75, 850, 570);
 
         // border untuk leaderboard
         g.setColor(Color.WHITE);
@@ -224,7 +224,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snakexLength[i] = snakexLength[i - 1];
                 }
                 // jika sudah lewat ujung kanan
-                if (snakexLength[i] > 855) {
+                if (snakexLength[0] > 865) {
                     // maot
                     dead();
                 }
@@ -248,7 +248,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snakexLength[i] = snakexLength[i - 1];
                 }
                 // jika sudah lewat ujung kiri
-                if (snakexLength[i] < 25) {
+                if (snakexLength[0] < 25) {
                     // maot
                     dead();
                 }
@@ -272,7 +272,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snakeyLength[i] = snakeyLength[i - 1];
                 }
                 // jika sudah lewat ujung atas
-                if (snakeyLength[i] < 75) {
+                if (snakeyLength[0] < 75) {
                     // maot
                     dead();
                 }
@@ -296,7 +296,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snakeyLength[i] = snakeyLength[i - 1];
                 }
                 // jika sudah lewat ujung bawah
-                if (snakeyLength[i] > 625) {
+                if (snakeyLength[0] > 635) {
                     // maot
                     dead();
                 }
