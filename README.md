@@ -24,11 +24,12 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
    - Membuat objek apple dan menempatkannya di board secara acak  
    - Membuat movement dari objek ular
 
-- **[Sprint 2](changelog/sprint-2.md) - (date from x until x)** 
-   - Short changes 1
-   - Short changes 2
+- **[Sprint 2](changelog/sprint-2.md) - (25 November 2020 - 02 Desember 2020)** 
+   - Membuat sistem scoring 
+   - Membuat kondisi game berakhir
+   - Membuat kondisi awal dan akhir aplikasi 
    
-- **[Sprint 3](changelog/sprint-3.md) - (date from x until x)** 
+- **[Sprint 3](changelog/sprint-3.md) - (03 Desember 2020 - 09 Desember 2020)** 
    - Short changes 1
    - Short changes 2
 
@@ -41,6 +42,7 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
 
 -  Gameplay.java
 -  SnakeGame.java
+-  Score.java
 
 UML image here
 

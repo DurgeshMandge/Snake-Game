@@ -17,9 +17,10 @@
 | 1.4 | Membuat Objek Apple dan Menempatkan di Board secara acak | YYY |
 | 2.1 | Membuat sistem scoring | ZZZ |  
 | 2.2 | Membuat kondisi game berakhir | BBB |
-| 2.3 | Membuat window untuk menampilkan Score | AAA |  
+| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | AAA |  
 | 3.1 | Membuat kondisi awal dan akhir aplikasi | CCC |
 | 3.2 | Membuat kondisi tambahan (opsional) | DDD |
+| 3.3 | Merapihkan kodingan dan melengkapi README.md | EEE |
 
 ## Sprint Backlog Plan (Sprint 1)
 | ID  | Title/Desc | Asignee | 

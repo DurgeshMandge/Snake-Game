@@ -11,7 +11,7 @@
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| 7             | 5             |
+| 3             | 3             |
 
 ## Sprint 2 Backlog
 
@@ -20,13 +20,15 @@
 | 2.1 | Membuat sistem scoring | Bagas | Done | 
 | 2.2 | Membuat kondisi game berakhir | Rahman | Done |
 | 2.3 | Membuat window untuk menampilkan 10 Score terbaik | Igun | On Progress |
+| 3.1 | Membuat kondisi awal dan akhir aplikasi | Igun | Done |
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas.
+Sprint kemarin ada penyesuaian tugas karena sprint 3.1 telah selesai dikerjakan sehingga 2.3 akan diselesaikan pada sprint-3
 
 ## Next Sprint Backlog (Sprint 3)
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
-| 3.1 | Preparing the x | Jane Doe | 
-| 3.2 | Make the x | John Doe | 
+| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | ALL |
+| 3.2 | Membuat kondisi tambahan (opsional) | ALL |
+| 3.3 | Merapihkan kodingan dan melengkapi README.md | ALL |

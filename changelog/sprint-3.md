@@ -1,24 +1,25 @@
 # Scrum Report (Sprint 3)
-| From dd/mm/yyyy to dd/mm/yyyy
+| From 03/12/2020 to 09/12/2020
 
 ## Team (Insert your name)
 | NPM           | Name        |
 | ------------- |-------------|
-| 140810xx00xx  | John Doe    |
-| 140810xx00xx  | Jane Doe    |
-| 140810xx00xx  | Lorem Ipsum |
+| 140810190009  | Farhan Gunadi    |
+| 140810190025  | Aghniya Abdurrahman Mannan    |
+| 140810190037  | Bagas Adi Firdaus |
 
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| n             | n             |
+| 3             | n             |
 
 ## Sprint 3 Backlog
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 3.1 | Preparing the x | Jane Doe | DONE |
-| 3.2 | Make the x | John Doe | FAILED |
+| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | On Progress |
+| 3.2 | Membuat kondisi tambahan (opsional) | On Progress |
+| 3.3 | Merapihkan kodingan dan melengkapi README.md | On Progress |
 
 ## Retrospective 
 
