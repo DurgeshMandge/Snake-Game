@@ -42,14 +42,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             145, 151, 157, 163, 169, 175, 181, 187, 193, 199, 205, 211, 217, 223, 229, 235, 241, 247, 253, 259, 265,
             271, 277, 283, 289, 295, 301, 307, 313, 319, 325, 331, 337, 343, 349, 355, 361, 367, 373, 379, 385, 391,
             397, 403, 409, 415, 421, 427, 433, 439, 445, 451, 457, 463, 469, 475, 481, 487, 493, 499, 505, 511, 517,
-            523, 529, 535, 541, 547, 553, 559, 565, 571, 577, 583, 589, 595, 601, 607, 613, 619, 625, 631, 637, 643,
-            649, 655, 661, 667, 673, 679, 685, 691, 697, 703, 709, 715, 721, 727, 733, 739, 745, 751, 757, 763, 769,
-            775, 781, 787, 793, 799, 805, 811, 817, 823, 829, 835, 841, 847, 853 };
+            523, 529, 535, 541, 547, 553, 559, 565, 571, 577, 583, 589, 595, 601, 607, 613, 619, 625 };
     private int[] appleyPos = { 73, 79, 85, 91, 97, 103, 109, 115, 121, 127, 133, 139, 145, 151, 157, 163, 169, 175,
             181, 187, 193, 199, 205, 211, 217, 223, 229, 235, 241, 247, 253, 259, 265, 271, 277, 283, 289, 295, 301,
             307, 313, 319, 325, 331, 337, 343, 349, 355, 361, 367, 373, 379, 385, 391, 397, 403, 409, 415, 421, 427,
             433, 439, 445, 451, 457, 463, 469, 475, 481, 487, 493, 499, 505, 511, 517, 523, 529, 535, 541, 547, 553,
-            559, 565, 571, 577, 583, 589, 595, 601, 607, 613, 619, 625 };
+            559, 565, 571, 577, 583, 589, 595, 601, 607, 613, 619, 625, 631, 637, 643, 649, 655, 661, 667 };
 
     // Buat gambar apple
     private ImageIcon appleImage;
@@ -57,8 +55,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Untuk generate random number
     private Random random = new Random();
 
-    private int xPos = random.nextInt(139);
-    private int yPos = random.nextInt(93);
+    private int xPos = random.nextInt(100);
+    private int yPos = random.nextInt(100);
 
     // Buat tittle game
     private ImageIcon titleImage;
@@ -115,19 +113,19 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // border untuk gameplay
         g.setColor(Color.WHITE);
-        g.drawRect(24, 71, 848, 568);
+        g.drawRect(24, 71, 620, 614);
 
         // background gameplay
         g.setColor(Color.black);
-        g.fillRect(25, 72, 847, 567);
+        g.fillRect(25, 72, 619, 613);
 
         // border untuk leaderboard
         g.setColor(Color.WHITE);
-        g.drawRect(894, 9, 292, 641);
+        g.drawRect(653, 71, 223, 614);
 
         // background leaderboard
         g.setColor(Color.black);
-        g.fillRect(895, 10, 290, 640);
+        g.fillRect(654, 72, 221, 613);
 
         // Tampilin Score
         g.setColor(Color.white);
@@ -155,8 +153,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if ((applexPos[xPos]) == snakexLength[0] && (appleyPos[yPos] == snakeyLength[0])) {
             lengthOfSnake++;
             score.increaseScore();
-            xPos = random.nextInt(139);
-            yPos = random.nextInt(93);
+            xPos = random.nextInt(100);
+            yPos = random.nextInt(100);
         }
 
         // Sebelum user mencet spacebar, apllenya ga keliatan
@@ -167,8 +165,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // menampilkan tulisan "Press Spacebar to Start the Game!"
         if (moves == 0) {
             g.setColor(Color.WHITE);
-            g.setFont(new Font("Courier New", Font.BOLD, 30));
-            g.drawString("Press Spacebar to Start the Game!", 150, 300);
+            g.setFont(new Font("Courier New", Font.BOLD, 26));
+            g.drawString("Press Spacebar to Start the Game!", 70, 300);
         }
 
         // Cek jika kepala menabrak badan
@@ -185,12 +183,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             // menampilkan tulisan "Game Over!"
             g.setColor(Color.RED);
             g.setFont(new Font("Courier New", Font.BOLD, 50));
-            g.drawString("Game Over!", 300, 300);
+            g.drawString("Game Over!", 190, 340);
 
             // menampilkan tulisan "Press Spacebar to restart!"
             g.setColor(Color.WHITE);
             g.setFont(new Font("Courier New", Font.BOLD, 20));
-            g.drawString("Press Spacebar to restart!", 300, 340);
+            g.drawString("Press Spacebar to restart!", 187, 380);
         }
 
         g.dispose();
@@ -228,7 +226,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snakexLength[i] = snakexLength[i - 1];
                 }
                 // jika sudah lewat ujung kanan
-                if (snakexLength[0] > 869) {
+                if (snakexLength[0] > 637) {
                     // maot
                     dead();
                 }
@@ -300,7 +298,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snakeyLength[i] = snakeyLength[i - 1];
                 }
                 // jika sudah lewat ujung bawah
-                if (snakeyLength[0] > 639) {
+                if (snakeyLength[0] > 679) {
                     // maot
                     dead();
                 }
