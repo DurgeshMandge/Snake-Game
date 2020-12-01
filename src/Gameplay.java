@@ -10,11 +10,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Font;
+import java.util.concurrent.*;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // menetukan panjang ular
@@ -34,8 +36,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int moves = 0;
 
     private Timer timer;
-    private int delay = 50;
+    private int delay = 500;
     private ImageIcon snakeBody;
+
+    AtomicBoolean speedUp = new AtomicBoolean(true);
 
     // Untuk posisi apple yang akan muncul secara random
     private int[] applexPos = { 25, 31, 37, 43, 49, 55, 61, 67, 73, 79, 85, 91, 97, 103, 109, 115, 121, 127, 133, 139,
@@ -67,7 +71,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     boolean death = false;
 
     public Gameplay() {
-
         // buat pas mulai gamenya
         addKeyListener(this);
         setFocusable(true);
@@ -316,6 +319,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        // Jika user neken shift
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            if (speedUp.compareAndSet(true, false)) {
+                timer.setDelay(50);
+            }
+        }
+
         // Jika user pencet spacebar
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             // Untuk mulai game
@@ -393,8 +403,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-
+        // Jika user lepas shift
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            speedUp.set(true);
+            timer.setDelay(delay);
+        }
     }
 
 }
