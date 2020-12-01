@@ -310,7 +310,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // jika user pencet right arrow
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (moves != 0) {
+            if (moves != 0 && !death) {
                 moves++;
                 if (!left) {
                     right = true;
@@ -324,7 +324,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
         // jika user pencet left arrow
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (moves != 0) {
+            if (moves != 0 && !death) {
                 moves++;
                 if (!right) {
                     left = true;
@@ -338,7 +338,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
         // jika user pencet up arrow
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            if (moves != 0) {
+            if (moves != 0 && !death) {
                 moves++;
                 if (!down) {
                     up = true;
@@ -352,7 +352,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
         // jika user pencet down arrow
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            if (moves != 0) {
+            if (moves != 0 && !death) {
                 moves++;
                 if (!up) {
                     down = true;
