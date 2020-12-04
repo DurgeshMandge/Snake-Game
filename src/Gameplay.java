@@ -1,6 +1,7 @@
 package src;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -17,6 +18,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Font;
 import java.util.concurrent.*;
+import java.io.*;
+import java.util.*;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // menetukan panjang ular
@@ -68,7 +71,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Buat score game
     Score score = new Score();
 
+    // Buat Highscore
+    private String highScore;
+
+    // Buat nentuin apakah sudah game over atau belum
     boolean death = false;
+
+    // Untuk tampilin controller
+    private ImageIcon arrowImage;
+    private ImageIcon shiftImage;
 
     public Gameplay() {
         // buat pas mulai gamenya
@@ -82,17 +93,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public void paint(Graphics g) {
         // cek jika game udah dimulai
         if (moves == 0) {
-            // snakexLength[4] = 350;
-            // snakexLength[3] = 375;
-            // snakexLength[2] = 400;
-            // snakexLength[1] = 425;
-            // snakexLength[0] = 450;
-
-            // snakeyLength[4] = 350;
-            // snakeyLength[3] = 350;
-            // snakeyLength[2] = 350;
-            // snakeyLength[1] = 350;
-            // snakeyLength[0] = 350;
             snakexLength[4] = 355;
             snakexLength[3] = 361;
             snakexLength[2] = 367;
@@ -132,8 +132,29 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // Tampilin Score
         g.setColor(Color.white);
+        g.setFont(new Font("Helvetica", Font.BOLD, 20));
+        g.drawString("SCORE : " + score.getScore(), 720, 110);
+        g.drawRect(653, 130, 221, 1);
+
+        // Tampilin HighScore
+        sortHighScore();
+        highScore = this.getHighScore();
+        g.drawString("HIGHSCORE", 705, 180);
+        drawString(g, highScore, 705, 200);
+
+        // Tampilin Controller
+        g.drawRect(653, 490, 221, 1);
+        g.setFont(new Font("Helvetica", Font.BOLD, 25));
+        g.drawString("CONTROLS", 690, 530);
+
+        arrowImage = new ImageIcon("images/keyboardArrow.png");
+        arrowImage.paintIcon(this, g, 670, 560);
         g.setFont(new Font("Helvetica", Font.PLAIN, 16));
-        g.drawString("Scores : " + score.getScore(), 760, 42);
+        g.drawString("Movement", 770, 590);
+
+        shiftImage = new ImageIcon("images/shift.png");
+        shiftImage.paintIcon(this, g, 695, 625);
+        g.drawString("Boost", 770, 640);
 
         // instansiasi gambar buat kepala ular
         snakeHead = new ImageIcon("images/snakeHead4.png");
@@ -182,19 +203,173 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
 
         // Cek jika mati
-        if (death) {
+        if (death) {    
+            // Save Scorenya ke file highscore.dat
+            saveNewScore();
+
             // menampilkan tulisan "Game Over!"
             g.setColor(Color.RED);
             g.setFont(new Font("Courier New", Font.BOLD, 50));
             g.drawString("Game Over!", 190, 340);
 
+            // menampilkan score
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Courier New", Font.BOLD, 18));
+            g.drawString("Your Score : " + score.getScore(), 250, 370);
+
             // menampilkan tulisan "Press Spacebar to restart!"
             g.setColor(Color.WHITE);
             g.setFont(new Font("Courier New", Font.BOLD, 20));
-            g.drawString("Press Spacebar to restart!", 187, 380);
+            g.drawString("Press Spacebar to restart!", 187, 400);
+        }
+        g.dispose();
+    }
+
+    // Void untuk menampilkan di layar string dengan \n di dalamnya
+    public void drawString(Graphics g, String text, int x, int y) {
+        for (String line : text.split("\n"))
+            g.drawString(line, x, y += g.getFontMetrics().getHeight());
+    }
+
+    // Fungsi buat ambil HighScore
+    public String getHighScore() {
+        FileReader readFile = null;
+        BufferedReader reader = null;
+        try {
+            // ReadFile highscore.dat
+            readFile = new FileReader("highscore.dat");
+            reader = new BufferedReader(readFile);
+
+            String line = reader.readLine();
+            String allLines = line;
+
+            while (line != null) {
+                // Baca per baris
+                line = reader.readLine();
+                // Ini ada untuk error handling
+                if (line == null)
+                    break;
+                // Gabunging barisnya
+                allLines = allLines.concat("\n" + line);
+            }
+
+            // return String yang persis seperti isi dari highscore.dat
+            return allLines;
+        }
+        // Kalau highscore.dat nya gaada
+        catch (Exception e) {
+            return "0\n0\n0\n0\n0\n0\n0\n0\n0\n0";
+        } finally {
+            try {
+                // Tutup readernya
+                if (reader != null)
+                    reader.close();
+            } // Kalau terjadi exception
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void sortHighScore() {
+        FileReader readFile = null;
+        BufferedReader reader = null;
+        FileWriter writeFile = null;
+        BufferedWriter writer = null;
+        List<String> list = new ArrayList<String>();
+        try {
+            readFile = new FileReader("highscore.dat");
+            reader = new BufferedReader(readFile);
+
+            String line = reader.readLine();
+
+            // Pindahkan isi dari highscore.dat ke sebuah array List
+            while (line != null) {
+                list.add(line);
+                line = reader.readLine();
+            }
+
+            // Sort array listnya
+            Collections.sort(list);
+
+            // Balikin biar jadi descending
+            Collections.reverse(list);
+
+            // Tulis ke highscore.dat, score yang udah diurutin
+            writeFile = new FileWriter("highscore.dat");
+            writer = new BufferedWriter(writeFile);
+
+            int size = list.size();
+
+            // Nantinya akan hanya 10 skor teratas yang ditulis kembali
+            for (int i = 0; i < 10; i++) {
+                // Ini untuk mengisi nilai lainnya 0
+                if (i > size - 1) {
+                    String def = "0";
+                    writer.write(def);
+                } else { // Ambil satu satu dari list
+                    String str = list.get(i).toString();
+                    writer.write(str);
+                }
+                if (i < 9) {// This prevent creating a blank like at the end of the file**
+                    writer.newLine();
+                }
+            }
+        } catch (Exception e) {
+            return;
+        } finally {
+            try {
+                // Tutup readernya
+                if (reader != null)
+                    reader.close();
+                // Tutup writer
+                if (writer != null)
+                    writer.close();
+            } // Kalau terjadi exception
+            catch (IOException e) {
+                return;
+            }
         }
 
-        g.dispose();
+    }
+
+    // Fungsi buat nulis score baru di file
+    public void saveNewScore() {
+        String newScore = String.valueOf(score.getScore());
+
+        // Buat file untuk simpan highscorenya
+        File scoreFile = new File("highscore.dat");
+
+        // Jika file highscore.datnya tidak ada
+        if (!scoreFile.exists()) {
+            try {
+                // Buat file baru
+                scoreFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        FileWriter writeFile = null;
+        BufferedWriter writer = null;
+
+        try {
+            // Tulis new scorenya di file
+            writeFile = new FileWriter(scoreFile, true);
+            writer = new BufferedWriter(writeFile);
+            writer.newLine();
+            writer.write(newScore);
+        } catch (Exception e) {
+            return;
+        } finally {
+            try {
+                if (writer != null)
+                    writer.close();
+            } catch (Exception e) {
+                return;
+            }
+        }
+
     }
 
     // function mati biar ga ngulang nulis kode berkali-kali
@@ -230,7 +405,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung kanan
                 if (snakexLength[0] > 637) {
-                    //pindahkan kepala kembali ke dalam board
+                    // pindahkan kepala kembali ke dalam board
                     snakexLength[0] -= 6;
                     // maot
                     dead();
@@ -256,7 +431,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung kiri
                 if (snakexLength[0] < 25) {
-                    //pindahkan kepala kembali ke dalam board
+                    // pindahkan kepala kembali ke dalam board
                     snakexLength[0] += 6;
                     // maot
                     dead();
@@ -282,7 +457,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung atas
                 if (snakeyLength[0] < 73) {
-                    //pindahkan kepala kembali ke dalam board
+                    // pindahkan kepala kembali ke dalam board
                     snakeyLength[0] += 6;
                     // maot
                     dead();
@@ -308,7 +483,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
                 // jika sudah lewat ujung bawah
                 if (snakeyLength[0] > 679) {
-                    //pindahkan kepala kembali ke dalam board
+                    // pindahkan kepala kembali ke dalam board
                     snakeyLength[0] -= 6;
                     // maot
                     dead();

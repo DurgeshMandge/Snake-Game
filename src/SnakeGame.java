@@ -10,7 +10,6 @@ public class SnakeGame {
         Gameplay gameplay = new Gameplay();
 
         obj.setBounds(10, 10, 910, 750);
-        // obj.setSize(920, 700);
         obj.setBackground(Color.DARK_GRAY);
         obj.setResizable(false);
         obj.setVisible(true);
