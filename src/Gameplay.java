@@ -22,21 +22,14 @@ import java.io.*;
 import java.util.*;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
-    // menetukan panjang ular
-    private int[] snakexLength = new int[750];
-    private int[] snakeyLength = new int[750];
+    //instansiasi objek snake
+    Snake snake = new Snake();
 
-    // arah ular
-    private boolean left = false;
-    private boolean right = false;
-    private boolean up = false;
-    private boolean down = false;
+    //instansiasi objek apple
+    Apple apple = new Apple();
 
     // buat gambar kepala
     private ImageIcon snakeHead;
-
-    private int lengthOfSnake = 5;
-    private int moves = 0;
 
     private Timer timer;
     private int delay = 500;
@@ -44,17 +37,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     AtomicBoolean speedUp = new AtomicBoolean(true);
 
-    // Untuk posisi apple yang akan muncul secara random
-    private int[] applexPos = { 25, 31, 37, 43, 49, 55, 61, 67, 73, 79, 85, 91, 97, 103, 109, 115, 121, 127, 133, 139,
-            145, 151, 157, 163, 169, 175, 181, 187, 193, 199, 205, 211, 217, 223, 229, 235, 241, 247, 253, 259, 265,
-            271, 277, 283, 289, 295, 301, 307, 313, 319, 325, 331, 337, 343, 349, 355, 361, 367, 373, 379, 385, 391,
-            397, 403, 409, 415, 421, 427, 433, 439, 445, 451, 457, 463, 469, 475, 481, 487, 493, 499, 505, 511, 517,
-            523, 529, 535, 541, 547, 553, 559, 565, 571, 577, 583, 589, 595, 601, 607, 613, 619, 625 };
-    private int[] appleyPos = { 73, 79, 85, 91, 97, 103, 109, 115, 121, 127, 133, 139, 145, 151, 157, 163, 169, 175,
-            181, 187, 193, 199, 205, 211, 217, 223, 229, 235, 241, 247, 253, 259, 265, 271, 277, 283, 289, 295, 301,
-            307, 313, 319, 325, 331, 337, 343, 349, 355, 361, 367, 373, 379, 385, 391, 397, 403, 409, 415, 421, 427,
-            433, 439, 445, 451, 457, 463, 469, 475, 481, 487, 493, 499, 505, 511, 517, 523, 529, 535, 541, 547, 553,
-            559, 565, 571, 577, 583, 589, 595, 601, 607, 613, 619, 625, 631, 637, 643, 649, 655, 661, 667 };
+    //koordinat letak kepala ular
+    private int snakeHeadXPos = 379;
 
     // Buat gambar apple
     private ImageIcon appleImage;
@@ -74,9 +58,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Buat Highscore
     private String highScore;
 
-    // Buat nentuin apakah sudah game over atau belum
-    boolean death = false;
-
     // Untuk tampilin controller
     private ImageIcon arrowImage;
     private ImageIcon shiftImage;
@@ -92,18 +73,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public void paint(Graphics g) {
         // cek jika game udah dimulai
-        if (moves == 0) {
-            snakexLength[4] = 355;
-            snakexLength[3] = 361;
-            snakexLength[2] = 367;
-            snakexLength[1] = 373;
-            snakexLength[0] = 379;
-
-            snakeyLength[4] = 355;
-            snakeyLength[3] = 355;
-            snakeyLength[2] = 355;
-            snakeyLength[1] = 355;
-            snakeyLength[0] = 355;
+        if (snake.moves == 0) {
+            for (int i=0;i<5;i++){
+                snake.snakexLength[i] = snakeHeadXPos;
+                snakeHeadXPos -= 6;
+                snake.snakeyLength[i] = 355;
+            }
         }
 
         // border judul
@@ -158,52 +133,52 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // instansiasi gambar buat kepala ular
         snakeHead = new ImageIcon("images/snakeHead4.png");
-        snakeHead.paintIcon(this, g, snakexLength[0], snakeyLength[0]);
+        snakeHead.paintIcon(this, g, snake.snakexLength[0], snake.snakeyLength[0]);
 
-        for (int i = 0; i < lengthOfSnake; i++) {
-            if (i == 0 && (right || left || up || down)) {
+        for (int i = 0; i < snake.lengthOfSnake; i++) {
+            if (i == 0 && (snake.right || snake.left || snake.up || snake.down)) {
                 snakeHead = new ImageIcon("images/snakeHead4.png");
-                snakeHead.paintIcon(this, g, snakexLength[i], snakeyLength[i]);
+                snakeHead.paintIcon(this, g, snake.snakexLength[i], snake.snakeyLength[i]);
             }
             if (i != 0) {
                 snakeBody = new ImageIcon("images/snakeimage4.png");
-                snakeBody.paintIcon(this, g, snakexLength[i], snakeyLength[i]);
+                snakeBody.paintIcon(this, g, snake.snakexLength[i], snake.snakeyLength[i]);
             }
         }
 
         appleImage = new ImageIcon("images/apple4.png");
 
         // Jika snakeya makan apllenya
-        if ((applexPos[xPos]) == snakexLength[0] && (appleyPos[yPos] == snakeyLength[0])) {
-            lengthOfSnake++;
+        if ((apple.applexPos[xPos]) == snake.snakexLength[0] && (apple.appleyPos[yPos] == snake.snakeyLength[0])) {
+            snake.lengthOfSnake++;
             score.increaseScore();
             xPos = random.nextInt(100);
             yPos = random.nextInt(100);
         }
 
         // Sebelum user mencet spacebar, apllenya ga keliatan
-        if (moves != 0) {
-            appleImage.paintIcon(this, g, applexPos[xPos], appleyPos[yPos]);
+        if (snake.moves != 0) {
+            appleImage.paintIcon(this, g, apple.applexPos[xPos], apple.appleyPos[yPos]);
         }
 
         // menampilkan tulisan "Press Spacebar to Start the Game!"
-        if (moves == 0) {
+        if (snake.moves == 0) {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Courier New", Font.BOLD, 26));
             g.drawString("Press Spacebar to Start the Game!", 70, 300);
         }
 
         // Cek jika kepala menabrak badan
-        for (int i = 1; i < lengthOfSnake; i++) {
+        for (int i = 1; i < snake.lengthOfSnake; i++) {
             // jika tabrakan terjadi
-            if (snakexLength[i] == snakexLength[0] && snakeyLength[i] == snakeyLength[0]) {
+            if (snake.snakexLength[i] == snake.snakexLength[0] && snake.snakeyLength[i] == snake.snakeyLength[0]) {
                 // panggil function dead
-                dead();
+                snake.dead();
             }
         }
 
         // Cek jika mati
-        if (death) {    
+        if (snake.death) {
             // Save Scorenya ke file highscore.dat
             saveNewScore();
 
@@ -372,16 +347,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     }
 
-    // function mati biar ga ngulang nulis kode berkali-kali
-    public void dead() {
-        // membuat ular tidak bisa bergerak
-        right = false;
-        left = false;
-        up = false;
-        down = false;
-        death = true;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
@@ -389,106 +354,30 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // untuk pergerakan ular
         // menggerakkan ular ke kanan
-        if (right) {
-            // pindahkan posisi head ke index selanjutnya
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakeyLength
-                snakeyLength[i + 1] = snakeyLength[i];
-            }
-            //
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakexLength
-                if (i == 0) {
-                    snakexLength[i] = snakexLength[i] + 6;
-                } else {
-                    snakexLength[i] = snakexLength[i - 1];
-                }
-                // jika sudah lewat ujung kanan
-                if (snakexLength[0] > 637) {
-                    // pindahkan kepala kembali ke dalam board
-                    snakexLength[0] -= 6;
-                    // maot
-                    dead();
-                }
-            }
+        if (snake.right) {
+            //panggil fungsi pada class Snake untuk menggerakkan ular ke kanan
+            snake.movementRight();
             // panggil kembali method paint secara otomatis
             repaint();
         }
         // menggerakkan ular ke kiri
-        if (left) {
-            // pindahkan posisi head ke index selanjutnya
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakeyLength
-                snakeyLength[i + 1] = snakeyLength[i];
-            }
-            //
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakexLength
-                if (i == 0) {
-                    snakexLength[i] = snakexLength[i] - 6;
-                } else {
-                    snakexLength[i] = snakexLength[i - 1];
-                }
-                // jika sudah lewat ujung kiri
-                if (snakexLength[0] < 25) {
-                    // pindahkan kepala kembali ke dalam board
-                    snakexLength[0] += 6;
-                    // maot
-                    dead();
-                }
-            }
+        if (snake.left) {
+            //panggil fungsi pada class Snake untuk menggerakkan ular ke kiri
+            snake.movementLeft();
             // panggil kembali method paint secara otomatis
             repaint();
         }
         // menggerakkan ular ke atas
-        if (up) {
-            // pindahkan posisi head ke index selanjutnya
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakexLength
-                snakexLength[i + 1] = snakexLength[i];
-            }
-            //
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakeyLength
-                if (i == 0) {
-                    snakeyLength[i] = snakeyLength[i] - 6;
-                } else {
-                    snakeyLength[i] = snakeyLength[i - 1];
-                }
-                // jika sudah lewat ujung atas
-                if (snakeyLength[0] < 73) {
-                    // pindahkan kepala kembali ke dalam board
-                    snakeyLength[0] += 6;
-                    // maot
-                    dead();
-                }
-            }
+        if (snake.up) {
+            //panggil fungsi pada class Snake untuk menggerakkan ular ke atas
+            snake.movementUp();
             // panggil kembali method paint secara otomatis
             repaint();
         }
         // menggerakkan ular ke bawah
-        if (down) {
-            // pindahkan posisi head ke index selanjutnya
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakexLength
-                snakexLength[i + 1] = snakexLength[i];
-            }
-            //
-            for (int i = lengthOfSnake - 1; i >= 0; i--) {
-                // pindahkan posisi snakeyLength
-                if (i == 0) {
-                    snakeyLength[i] = snakeyLength[i] + 6;
-                } else {
-                    snakeyLength[i] = snakeyLength[i - 1];
-                }
-                // jika sudah lewat ujung bawah
-                if (snakeyLength[0] > 679) {
-                    // pindahkan kepala kembali ke dalam board
-                    snakeyLength[0] -= 6;
-                    // maot
-                    dead();
-                }
-            }
+        if (snake.down) {
+            //panggil fungsi pada class Snake untuk menggerakkan ular ke bawah
+            snake.movementDown();
             // panggil kembali method paint secara otomatis
             repaint();
         }
@@ -502,85 +391,50 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // Jika user neken shift
-        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            if (speedUp.compareAndSet(true, false)) {
-                timer.setDelay(50);
-            }
-        }
-
-        // Jika user pencet spacebar
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            // Untuk mulai game
-            if (moves == 0) {
-                moves++;
-                right = true;
-            }
-            // Untuk restart game abis mati
-            if (death) {
-                moves = 0;
-                lengthOfSnake = 5;
-                score.resetScore();
-                repaint();
-                death = false;
-            }
-        }
-
-        // jika user pencet right arrow
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (moves != 0 && !death) {
-                moves++;
-                if (!left) {
-                    right = true;
-                } else {
-                    right = false;
-                    left = true;
+        //kondisi penekanan tombol
+        switch (e.getKeyCode()){
+            //jika user tekan shift
+            case KeyEvent.VK_SHIFT:
+                if (speedUp.compareAndSet(true, false)) {
+                    timer.setDelay(50);
                 }
-                up = false;
-                down = false;
-            }
-        }
-        // jika user pencet left arrow
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (moves != 0 && !death) {
-                moves++;
-                if (!right) {
-                    left = true;
-                } else {
-                    left = false;
-                    right = true;
+                break;
+            //jika user tekan spasi
+            case KeyEvent.VK_SPACE:
+                // Untuk mulai game
+                if (snake.moves == 0) {
+                    snake.moves++;
+                    snake.right = true;
                 }
-                up = false;
-                down = false;
-            }
-        }
-        // jika user pencet up arrow
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            if (moves != 0 && !death) {
-                moves++;
-                if (!down) {
-                    up = true;
-                } else {
-                    up = false;
-                    down = true;
+                // Untuk restart game abis mati
+                if (snake.death) {
+                    snake.moves = 0;
+                    snake.lengthOfSnake = 5;
+                    score.resetScore();
+                    repaint();
+                    snake.death = false;
                 }
-                left = false;
-                right = false;
-            }
-        }
-        // jika user pencet down arrow
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            if (moves != 0 && !death) {
-                moves++;
-                if (!up) {
-                    down = true;
-                } else {
-                    down = false;
-                    up = true;
-                }
-                left = false;
-                right = false;
-            }
+                break;
+            //jika user tekan arrow right
+            case KeyEvent.VK_RIGHT:
+                //panggil fungsi pada class Snake untuk gerak ke kanan
+                snake.moveRight();
+                break;
+            //jika user tekan arrow left
+            case KeyEvent.VK_LEFT:
+                //panggil fungsi pada class Snake untuk gerak ke kiri
+                snake.moveLeft();
+                break;
+            //jika user tekan arrow up
+            case KeyEvent.VK_UP:
+                //panggil fungsi pada class Snake untuk gerak ke atas
+                snake.moveUp();
+                break;
+            //jika user tekan arrow down
+            case KeyEvent.VK_DOWN:
+                //panggil fungsi pada class Snake untuk gerak ke bawah
+                snake.moveDown();
+                break;
         }
     }
 
