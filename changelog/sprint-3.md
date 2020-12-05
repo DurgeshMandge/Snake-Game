@@ -19,7 +19,7 @@
 | --- | ---------- | ------- | ------ |
 | 2.3 | Membuat window untuk menampilkan 10 Score terbaik | On Progress |
 | 3.2 | Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  | On Progress |
-| 3.3 | Merapihkan kodingan dan melengkapi README.md | On Progress |
+| 3.3 | Merapihkan kodingan dan melengkapi README.md | DONE |
 
 ## Retrospective 
 
