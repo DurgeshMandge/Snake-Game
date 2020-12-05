@@ -18,10 +18,10 @@
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
 | 2.3 | Membuat window untuk menampilkan 10 Score terbaik | On Progress |
-| 3.2 | Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  | On Progress |
+| 3.2 | Membuat kondisi tambahan (opsional) | On Progress |
 | 3.3 | Merapihkan kodingan dan melengkapi README.md | On Progress |
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas.
+Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas. Lorem ipsum dolor sit amet
 

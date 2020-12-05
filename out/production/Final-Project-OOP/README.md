@@ -30,9 +30,8 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
    - Membuat kondisi awal dan akhir aplikasi 
    
 - **[Sprint 3](changelog/sprint-3.md) - (03 Desember 2020 - 09 Desember 2020)** 
-   - Membuat kondisi awal dan akhir aplikasi
-   - Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  
-   - Merapihkan kodingan dan melengkapi README.md
+   - Short changes 1
+   - Short changes 2
 
 ## Running The App
 
@@ -44,8 +43,6 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
 -  Gameplay.java
 -  SnakeGame.java
 -  Score.java
--  Snake.java
--  Apple.java
 
 UML image here
 
