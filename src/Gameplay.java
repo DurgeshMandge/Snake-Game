@@ -251,7 +251,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         BufferedReader reader = null;
         FileWriter writeFile = null;
         BufferedWriter writer = null;
-        List<String> list = new ArrayList<String>();
+        List<Integer> list = new ArrayList<Integer>();
         try {
             readFile = new FileReader("highscore.dat");
             reader = new BufferedReader(readFile);
@@ -260,7 +260,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
             // Pindahkan isi dari highscore.dat ke sebuah array List
             while (line != null) {
-                list.add(line);
+                list.add(Integer.parseInt(line));
                 line = reader.readLine();
             }
 
@@ -283,7 +283,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     String def = "0";
                     writer.write(def);
                 } else { // Ambil satu satu dari list
-                    String str = list.get(i).toString();
+                    String str = String.valueOf(list.get(i));
                     writer.write(str);
                 }
                 if (i < 9) {// This prevent creating a blank like at the end of the file**
