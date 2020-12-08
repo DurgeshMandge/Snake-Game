@@ -33,6 +33,7 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
   - Membuat sistem scoring
   - Membuat kondisi game berakhir
   - Membuat kondisi awal dan akhir aplikasi
+
 - **[Sprint 3](changelog/sprint-3.md) - (03 Desember 2020 - 09 Desember 2020)**
 
   - Membuat kondisi awal dan akhir aplikasi
@@ -40,96 +41,106 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
   - Merapihkan kodingan dan melengkapi README.md
 
 ## Running The App
+
 File utama yang digunakan dalam program ini adalah SnakeGame.java.
 
 **1. Buka Terminal di IDE yang kalian gunakan**
 
 **2. Jalankan class Gameplay.java**
+
 ```
 javac src/Gameplay.java
 ```
 
 **3. Jalankan class SnakeGame.java**
+
 ```
 javac src/SnakeGame.java
 ```
+
 ```
 java src/SnakeGame.java
 ```
+
 **4. Enjoy permainannya**
 
 ## Classes Used
 
 **1.Main App** - `SnakeGame.java`
-   - Main program untuk menghandle Tampilan dan Gameplay
-   
+
+- Main program untuk menghandle Tampilan dan Gameplay
+
 **2. Gameplay** - `Gameplay.java`
-   - Class untuk proses game berjalan
-   - 13 Variabel Class
-     - snakeHead: ImageIcon
-     - Timer: Timer
-     - delay: int
-     - snakeBody: ImageIcon
-     - speedUp: AtomicBoolean
-     - snakeHeadXPos: int
-     - appleImage: ImageIcon
-     - xPos: int
-     - yPos: int
-     - titleImage: ImageIcon
-     - highScore: String
-     - arrowImage: ImageIcon
-     - shiftImage: ImageIcon
-   - 6 Method
-     - **Gameplay()** - Untuk constructor class
-     - **paint(g)** - Untuk desain frame/UI
-     - **drawString(g, text, x, y)** - untuk menampilkan di layar string dengan \n di dalamnya
-     - **actionPerformed(e)** - Digunakkan untuk mengatur pergerakkan ular
-     - **keyPressed(e)** - Untuk mengatur kondisi ketika menekan tombol keyboard
-     - **keyReleased (e)** - Untuk mengatur ketika user lepas/menekan shift
-     
+
+- Class untuk proses game berjalan
+- 13 Variabel Class
+  - snakeHead: ImageIcon
+  - Timer: Timer
+  - delay: int
+  - snakeBody: ImageIcon
+  - speedUp: AtomicBoolean
+  - snakeHeadXPos: int
+  - appleImage: ImageIcon
+  - xPos: int
+  - yPos: int
+  - titleImage: ImageIcon
+  - highScore: String
+  - arrowImage: ImageIcon
+  - shiftImage: ImageIcon
+- 6 Method
+  - **Gameplay()** - Untuk constructor class
+  - **paint(g)** - Untuk desain frame/UI
+  - **drawString(g, text, x, y)** - untuk menampilkan di layar string dengan \n di dalamnya
+  - **actionPerformed(e)** - Digunakkan untuk mengatur pergerakkan ular
+  - **keyPressed(e)** - Untuk mengatur kondisi ketika menekan tombol keyboard
+  - **keyReleased (e)** - Untuk mengatur ketika user lepas/menekan shift
+
 **3. Score** - `Score.java`
-   - Class untuk mengatur score game
-   - 1 Variabel Class
-     - score: int
-   - 7 Method
-     - **Score()** - Untuk constructor class
-     - **increaseScore()** - Untuk menambah/increase score
-     - **resetScore()** - Untuk mereset score
-     - **getScore()** - untuk mengembalikan nilai score ke tampilan Gameplay
-     - **getHighScore()** - Fungsi buat ambil HighScore
-     - **sortHighScore()** - untuk mengurutkan high score
-     - **saveNewScore()** - Fungsi buat nulis score baru di file
-     
+
+- Class untuk mengatur score game
+- 1 Variabel Class
+  - score: int
+- 7 Method
+  - **Score()** - Untuk constructor class
+  - **increaseScore()** - Untuk menambah/increase score
+  - **resetScore()** - Untuk mereset score
+  - **getScore()** - untuk mengembalikan nilai score ke tampilan Gameplay
+  - **getHighScore()** - Fungsi buat ambil HighScore
+  - **sortHighScore()** - untuk mengurutkan high score
+  - **saveNewScore()** - Fungsi buat nulis score baru di file
+
 **4. Snake** - `Snake.java`
-   - Class untuk mengatur snake
-   - 9 Variabel Class
-     - snakexLength: int []
-     - snakeyLength: int []
-     - lengthOfSnake: int 
-     - moves: int 
-     - left: boolean 
-     - right: boolean 
-     - up: boolean 
-     - down: boolean 
-     - death: boolean 
-   - 10 Method
-     - **Snake()** - Untuk constructor class
-     - **moveRight()** - Untuk gerak ular ke kanan
-     - **moveLeft()** - Untuk gerak ular ke kiri
-     - **moveUp()** - Untuk gerak ular ke atas
-     - **moveDown()** - Untuk gerak ular ke bawah
-     - **dead()** - Function mati agar tidak mengulang nulis kode berkali-kali
-     - **movementRight()** - Untuk pergerakan ular ke kanan
-     - **movementLeft()** - Untuk pergerakan ular ke kiri
-     - **movementUp()** - Untuk pergerakan ular ke atas
-     - **movementDown()** - Untuk pergerakan ular ke bawah
-     
+
+- Class untuk mengatur snake
+- 9 Variabel Class
+  - snakexLength: int []
+  - snakeyLength: int []
+  - lengthOfSnake: int
+  - moves: int
+  - left: boolean
+  - right: boolean
+  - up: boolean
+  - down: boolean
+  - death: boolean
+- 10 Method
+  - **Snake()** - Untuk constructor class
+  - **moveRight()** - Untuk gerak ular ke kanan
+  - **moveLeft()** - Untuk gerak ular ke kiri
+  - **moveUp()** - Untuk gerak ular ke atas
+  - **moveDown()** - Untuk gerak ular ke bawah
+  - **dead()** - Function mati agar tidak mengulang nulis kode berkali-kali
+  - **movementRight()** - Untuk pergerakan ular ke kanan
+  - **movementLeft()** - Untuk pergerakan ular ke kiri
+  - **movementUp()** - Untuk pergerakan ular ke atas
+  - **movementDown()** - Untuk pergerakan ular ke bawah
+
 **5. Apple** - `Apple.java`
-   - Class untuk mengatur posisi apel ketika game mulai
-   - 2 Variabel Class
-     - applexPos: int []
-     - appleyPos: int []
-   - 0 Method
+
+- Class untuk mengatur posisi apel ketika game mulai
+- 2 Variabel Class
+  - applexPos: int []
+  - appleyPos: int []
+- 0 Method
 
 ## UML
 
@@ -140,7 +151,6 @@ java src/SnakeGame.java
 - Desain Aplikasi
   - Board game di desain dengan ukuran 100x100 sel.
   - Game akan dimulai ketika user menekan SPACEBAR
-  
 - Score
   - Permainan dimulai dengan score = 0 dan akan bertambah 1 setiap kali ular memakan apel
   - Ketika pertama kali program dijalankan, highscore akan = 0
@@ -148,12 +158,18 @@ java src/SnakeGame.java
   - Program akan menyimpan 10 highscore tertinggi
   - Highscore tidak akan hilang walaupun aplikasi sudah ditutup
   - Score akan tersimpan di `highscore.dat`
-  
 - Snake
   - Panjang awal ular sebelum dimulai = 5 sel dan akan bertambah 1 sel setiap kali ular memakan apel
   - Ular akan mati ketika menabrak tembok atau menabrak badannya
   - Boostspeed ketika memencet SHIFT di keyboard
-  
 - Apple
   - Apel akan muncul secara random ketika game dimulai
   - Apel berukuran 1 cell
+
+## UI
+
+1. **Sebelum game dimulai**
+   ![Start Game](/images/UI.png)
+
+1. **Setelah game berakhir**
+   ![Start Game](/images/UI2.png)
