@@ -48,9 +48,7 @@ File utama yang digunakan dalam program ini adalah SnakeGame.java.
 ```
 javac src/Gameplay.java
 ```
-```
-java src/Gameplay.java
-```
+
 **3. Jalankan class SnakeGame.java**
 ```
 javac src/SnakeGame.java
