@@ -206,10 +206,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.drawString(line, x, y += g.getFontMetrics().getHeight());
     }
 
-
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
