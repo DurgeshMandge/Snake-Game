@@ -172,4 +172,4 @@ java src/SnakeGame.java
    ![Start Game](/images/UI.PNG)
 
 1. **Setelah game berakhir**
-   ![Start Game](/images/UI2.PNG)
+   ![End Game](/images/UI2.PNG)
