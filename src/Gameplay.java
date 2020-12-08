@@ -149,7 +149,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             yPos = random.nextInt(100);
 
             // mempercepat gerakan ular tiap kali skor mencapai kelipatan 10
-            if (score.getScore() % 10 == 0 && score.getScore()!= 0){
+            if (score.getScore() % 5 == 0 && score.getScore()!= 0){
                 if(delay > 100){
                     delay = delay - 100;
                 }
@@ -265,8 +265,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             // jika user tekan shift
             case KeyEvent.VK_SHIFT:
                 if (speedUp.compareAndSet(true, false)) {
-                    if (delay > 50) {
-                        timer.setDelay(50);
+                    if (delay > 100) {
+                        timer.setDelay(delay/10);
                     }
                     else {
                         timer.setDelay(10);
