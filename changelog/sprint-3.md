@@ -1,7 +1,7 @@
 # Scrum Report (Sprint 3)
 | From 03/12/2020 to 09/12/2020
 
-## Team (Insert your name)
+## HAiYU Dev
 | NPM           | Name        |
 | ------------- |-------------|
 | 140810190009  | Farhan Gunadi    |
