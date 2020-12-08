@@ -17,11 +17,10 @@
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 2.3 | Membuat window untuk menampilkan 10 Score terbaik |   | DONE |
-| 3.2 | Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  |  | DONE |
-| 3.3 | Merapihkan kodingan dan melengkapi README.md |  | DONE |
+| 2.3 | Membuat window untuk menampilkan 10 Score terbaik |  ALL | DONE |
+| 3.2 | Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  | ALL | DONE |
+| 3.3 | Merapihkan kodingan dan melengkapi README.md | ALL | DONE |
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas.
 
