@@ -147,6 +147,23 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             score.increaseScore();
             xPos = random.nextInt(100);
             yPos = random.nextInt(100);
+
+            // mempercepat gerakan ular tiap kali skor mencapai kelipatan 10
+            if (score.getScore() % 10 == 0 && score.getScore()!= 0){
+                if(delay > 100){
+                    delay = delay - 100;
+                }
+                else if (delay == 100){
+                    delay = delay - 50;
+                }
+                else if (delay <= 50 && delay > 20){
+                    delay = delay - 10;
+                }
+                else {
+                    delay = 20;
+                }
+                timer.setDelay(delay);
+            }
         }
 
         // Sebelum user mencet spacebar, apllenya ga keliatan
@@ -248,7 +265,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             // jika user tekan shift
             case KeyEvent.VK_SHIFT:
                 if (speedUp.compareAndSet(true, false)) {
-                    timer.setDelay(50);
+                    if (delay > 50) {
+                        timer.setDelay(50);
+                    }
+                    else {
+                        timer.setDelay(10);
+                    }
                 }
                 break;
             // jika user tekan spasi
