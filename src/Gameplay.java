@@ -1,12 +1,9 @@
 package src;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
@@ -15,17 +12,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.Font;
-import java.util.concurrent.*;
-import java.io.*;
-import java.util.*;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
-    //instansiasi objek snake
+    // instansiasi objek snake
     Snake snake = new Snake();
 
-    //instansiasi objek apple
+    // instansiasi objek apple
     Apple apple = new Apple();
 
     // buat gambar kepala
@@ -37,7 +30,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     AtomicBoolean speedUp = new AtomicBoolean(true);
 
-    //koordinat letak kepala ular
+    // koordinat letak kepala ular
     private int snakeHeadXPos = 379;
 
     // Buat gambar apple
@@ -74,7 +67,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public void paint(Graphics g) {
         // cek jika game udah dimulai
         if (snake.moves == 0) {
-            for (int i=0;i<5;i++){
+            for (int i = 0; i < 5; i++) {
                 snake.snakexLength[i] = snakeHeadXPos;
                 snakeHeadXPos -= 6;
                 snake.snakeyLength[i] = 355;
@@ -214,28 +207,28 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // untuk pergerakan ular
         // menggerakkan ular ke kanan
         if (snake.right) {
-            //panggil fungsi pada class Snake untuk menggerakkan ular ke kanan
+            // panggil fungsi pada class Snake untuk menggerakkan ular ke kanan
             snake.movementRight();
             // panggil kembali method paint secara otomatis
             repaint();
         }
         // menggerakkan ular ke kiri
         if (snake.left) {
-            //panggil fungsi pada class Snake untuk menggerakkan ular ke kiri
+            // panggil fungsi pada class Snake untuk menggerakkan ular ke kiri
             snake.movementLeft();
             // panggil kembali method paint secara otomatis
             repaint();
         }
         // menggerakkan ular ke atas
         if (snake.up) {
-            //panggil fungsi pada class Snake untuk menggerakkan ular ke atas
+            // panggil fungsi pada class Snake untuk menggerakkan ular ke atas
             snake.movementUp();
             // panggil kembali method paint secara otomatis
             repaint();
         }
         // menggerakkan ular ke bawah
         if (snake.down) {
-            //panggil fungsi pada class Snake untuk menggerakkan ular ke bawah
+            // panggil fungsi pada class Snake untuk menggerakkan ular ke bawah
             snake.movementDown();
             // panggil kembali method paint secara otomatis
             repaint();
@@ -250,15 +243,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        //kondisi penekanan tombol
-        switch (e.getKeyCode()){
-            //jika user tekan shift
+        // kondisi penekanan tombol
+        switch (e.getKeyCode()) {
+            // jika user tekan shift
             case KeyEvent.VK_SHIFT:
                 if (speedUp.compareAndSet(true, false)) {
                     timer.setDelay(50);
                 }
                 break;
-            //jika user tekan spasi
+            // jika user tekan spasi
             case KeyEvent.VK_SPACE:
                 // Untuk mulai game
                 if (snake.moves == 0) {
@@ -274,24 +267,24 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     snake.death = false;
                 }
                 break;
-            //jika user tekan arrow right
+            // jika user tekan arrow right
             case KeyEvent.VK_RIGHT:
-                //panggil fungsi pada class Snake untuk gerak ke kanan
+                // panggil fungsi pada class Snake untuk gerak ke kanan
                 snake.moveRight();
                 break;
-            //jika user tekan arrow left
+            // jika user tekan arrow left
             case KeyEvent.VK_LEFT:
-                //panggil fungsi pada class Snake untuk gerak ke kiri
+                // panggil fungsi pada class Snake untuk gerak ke kiri
                 snake.moveLeft();
                 break;
-            //jika user tekan arrow up
+            // jika user tekan arrow up
             case KeyEvent.VK_UP:
-                //panggil fungsi pada class Snake untuk gerak ke atas
+                // panggil fungsi pada class Snake untuk gerak ke atas
                 snake.moveUp();
                 break;
-            //jika user tekan arrow down
+            // jika user tekan arrow down
             case KeyEvent.VK_DOWN:
-                //panggil fungsi pada class Snake untuk gerak ke bawah
+                // panggil fungsi pada class Snake untuk gerak ke bawah
                 snake.moveDown();
                 break;
         }
