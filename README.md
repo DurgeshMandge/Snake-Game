@@ -139,10 +139,21 @@ java src/SnakeGame.java
 
 - Desain Aplikasi
   - Board game di desain dengan ukuran 100x100 sel.
-  - Panjang awal ular sebelum dimulai = 5 sel dan akan bertambah 1 sel setiap kali ular memakan apel
-  - Ular akan mati ketika menabrak tembok atau menabrak badannya
+  - Game akan dimulai ketika user menekan SPACEBAR
+  
+- Score
   - Permainan dimulai dengan score = 0 dan akan bertambah 1 setiap kali ular memakan apel
   - Ketika pertama kali program dijalankan, highscore akan = 0
   - Highscore akan disimpan ketika ular telah dimainkan sampai mati (game over)
   - Program akan menyimpan 10 highscore tertinggi
   - Highscore tidak akan hilang walaupun aplikasi sudah ditutup
+  - Score akan tersimpan di `highscore.dat`
+  
+- Snake
+  - Panjang awal ular sebelum dimulai = 5 sel dan akan bertambah 1 sel setiap kali ular memakan apel
+  - Ular akan mati ketika menabrak tembok atau menabrak badannya
+  - Boostspeed ketika memencet SHIFT di keyboard
+  
+- Apple
+  - Apel akan muncul secara random ketika game dimulai
+  - Apel berukuran 1 cell
