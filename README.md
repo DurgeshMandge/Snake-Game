@@ -40,8 +40,10 @@ Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh mema
   - Merapihkan kodingan dan melengkapi README.md
 
 ## Running The App
-File utama yang digunakan dalam program ini adalah SnakeGame.java 
+File utama yang digunakan dalam program ini adalah SnakeGame.java.
+
 **1. Buka Terminal di IDE yang kalian gunakan**
+
 **2. Jalankan class Gameplay.java**
 ```
 javac src/Gameplay.java
@@ -123,6 +125,7 @@ java src/SnakeGame.java
      - **movementLeft()** - Untuk pergerakan ular ke kiri
      - **movementUp()** - Untuk pergerakan ular ke atas
      - **movementDown()** - Untuk pergerakan ular ke bawah
+     
 **5. Apple** - `Apple.java`
    - Class untuk mengatur posisi apel ketika game mulai
    - 2 Variabel Class
