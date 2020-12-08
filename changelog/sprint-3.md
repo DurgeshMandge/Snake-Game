@@ -11,14 +11,14 @@
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| 3             | n             |
+| 3             | 3             |
 
 ## Sprint 3 Backlog
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | On Progress |
-| 3.2 | Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  | On Progress |
+| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | DONE |
+| 3.2 | Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift  | DONE |
 | 3.3 | Merapihkan kodingan dan melengkapi README.md | DONE |
 
 ## Retrospective 
