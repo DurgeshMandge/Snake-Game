@@ -138,8 +138,11 @@ java src/SnakeGame.java
 ## Notable Assumption and Design App Details
 
 - Desain Aplikasi
-  - Board game di desain dengan ukuran setiap cell nya 100x100.
-  - Ular akan mati ketika menabrak tembok dan menabrak badannya
-  - Ketika program dijalankan, baik score maupun highscore dimulai dari 0
-  - Highscore akan disimpan ketika ular telah dimainkan
+  - Board game di desain dengan ukuran 100x100 sel.
+  - Panjang awal ular sebelum dimulai = 5 sel dan akan bertambah 1 sel setiap kali ular memakan apel
+  - Ular akan mati ketika menabrak tembok atau menabrak badannya
+  - Permainan dimulai dengan score = 0 dan akan bertambah 1 setiap kali ular memakan apel
+  - Ketika pertama kali program dijalankan, highscore akan = 0
+  - Highscore akan disimpan ketika ular telah dimainkan sampai mati (game over)
+  - Program akan menyimpan 10 highscore tertinggi
   - Highscore tidak akan hilang walaupun aplikasi sudah ditutup
