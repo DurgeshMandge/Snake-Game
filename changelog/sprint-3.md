@@ -11,7 +11,7 @@
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| 3             | 3             |
+| 3             | 5             |
 
 ## Sprint 3 Backlog
 
@@ -25,7 +25,6 @@
 
 ## Retrospective   
 Program sudah selesai sesuai dengan challenge guideline dan ada fitur tambahan yaitu dapat menyimpan
-dan menampilkan highscore, menampilkan list tombol untuk kontrol game, dan mempercepat pergerakan ular
-tiap skor kelipatan 5.
+dan menampilkan 10 highscore, menampilkan list tombol untuk kontrol game, cara untuk mempercepat pergerakan ular (menekan tombol shift) dan mempercepat pergerakan ular tiap skor kelipatan 5.
 
 
