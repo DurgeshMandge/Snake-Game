@@ -19,7 +19,7 @@
 | --- | ---------- | ------- | ------ |
 | 2.1 | Membuat sistem scoring | Bagas | Done | 
 | 2.2 | Membuat kondisi game berakhir | Rahman | Done |
-| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | Igun | On Progress |
+| 2.3 | Membuat window untuk menampilkan 10 Score terbaik | Igun | Failed |
 | 3.1 | Membuat kondisi awal dan akhir aplikasi | Igun | Done |
 
 ## Retrospective 

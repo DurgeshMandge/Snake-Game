@@ -162,6 +162,8 @@ java src/SnakeGame.java
   - Panjang awal ular sebelum dimulai = 5 sel dan akan bertambah 1 sel setiap kali ular memakan apel
   - Ular akan mati ketika menabrak tembok atau menabrak badannya
   - Boostspeed ketika memencet SHIFT di keyboard
+  - Tiap kali score mencapai kelipatan 5, pergerakan ular makin cepat  
+  - Boostspeed menyesuaikan kecepatan ular  
 - Apple
   - Apel akan muncul secara random ketika game dimulai
   - Apel berukuran 1 cell
