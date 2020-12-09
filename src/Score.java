@@ -155,7 +155,6 @@ public class Score {
             // Tulis new scorenya di file
             writeFile = new FileWriter(scoreFile, true);
             writer = new BufferedWriter(writeFile);
-            writer.newLine();
             writer.write(newScore);
         } catch (Exception e) {
             return;
