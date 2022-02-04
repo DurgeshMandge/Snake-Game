@@ -1,58 +1,58 @@
-# GAME SNAKE
+# SNAKE GAME
 
-This repository is a final project (Java GUI) from Object-Oriented Programming Class, Teknik Informatika Universitas Padjadjaran.
+This repository is the final project (Java GUI) of the Object Oriented Programming Class, Informatics Engineering, Universitas Padjadjaran.
 
-[Challenge Guidelines](challenge-guideline.md)
+[Challenge Guide](challenge-guideline.md)
 
-Game Snake adalah game dimana pemain mengendalikan sebuah garis yang tumbuh memanjang, dengan garis itu sendiri yang menjadi rintangan utama.
+The Snake game is a game where the player controls a line that grows in length, with the line itself being the main obstacle.
 
-## Credits
+## Credit
 
-| NPM          | Name                       |
+| NPM | Name |
 | ------------ | -------------------------- |
-| 140810190009 | Farhan Gunadi              |
-| 140810190025 | Aghniya Abdurrahman Mannan |
-| 140810190037 | Bagas Adi Firdaus          |
+| 14080190009 | Farhan Gunadi |
+| 14080190025 | Aghniya Abdurrahman Mannan |
+| 14080190037 | Bagas Adi Firdaus |
 
 ## Change log
 
 - **[Sprint Planning](changelog/sprint-planning.md) - (18 November 2020)**
 
-  - Bagi tugas untuk minggu pertama
-  - Buat Sprint 1
+  - Divide tasks for the first week
+  - Create Sprint 1
 
 - **[Sprint 1](changelog/sprint-1.md) - (18 November 2020 - 24 November 2020)**
 
-  - Membuat board game
-  - Membuat objek ular dan menempatkannya di board
-  - Membuat objek apple dan menempatkannya di board secara acak
-  - Membuat movement dari objek ular
+  - Making board games
+  - Create a snake object and place it on the board
+  - Create apple objects and place them on the board randomly
+  - Make movement of snake object
 
-- **[Sprint 2](changelog/sprint-2.md) - (25 November 2020 - 02 Desember 2020)**
+- **[Sprint 2](changelog/sprint-2.md) - (25 November 2020 - 02 December 2020)**
 
-  - Membuat sistem scoring
-  - Membuat kondisi game berakhir
-  - Membuat kondisi awal dan akhir aplikasi
+  - Create a scoring system
+  - Make game ending condition
+  - Create application start and end conditions
 
-- **[Sprint 3](changelog/sprint-3.md) - (03 Desember 2020 - 09 Desember 2020)**
+- **[Sprint 3](changelog/sprint-3.md) - (03 December 2020 - 09 December 2020)**
 
-  - Membuat kondisi awal dan akhir aplikasi
-  - Membuat kondisi tambahan dimana pergerakan ular dipercepat jika user menekan tombol shift
-  - Merapihkan kodingan dan melengkapi README.md
+  - Create application start and end conditions
+  - Created an additional condition where the snake's movement is accelerated if the user presses the shift key
+  - Cleaned up the code and complements README.md
 
-## Running The App
+## Running Application
 
-File utama yang digunakan dalam program ini adalah SnakeGame.java.
+The main file used in this program is SnakeGame.java.
 
-**1. Buka Terminal di IDE yang kalian gunakan**
+**1. Open Terminal in the IDE you are using**
 
-**2. Jalankan class Gameplay.java**
+**2. Run the Gameplay.java class**
 
 ```
 javac src/Gameplay.java
 ```
 
-**3. Jalankan class SnakeGame.java**
+**3. Run the SnakeGame.java class**
 
 ```
 javac src/SnakeGame.java
@@ -62,83 +62,83 @@ javac src/SnakeGame.java
 java src/SnakeGame.java
 ```
 
-**4. Enjoy permainannya**
+**4. Enjoy the game**
 
-## Classes Used
+## Class Used
 
-**1.Main App** - `SnakeGame.java`
+**1.Main Application** - `SnakeGame.java`
 
-- Main program untuk menghandle Tampilan dan Gameplay
+- The main program to handle Display and Gameplay
 
 **2. Gameplay** - `Gameplay.java`
 
-- Class untuk proses game berjalan
-- 13 Variabel Class
-  - snakeHead: ImageIcon
+- Class for running game process
+- 13 Variable Classes
+  - snake head: Image Icon
   - Timer: Timer
-  - delay: int
-  - snakeBody: ImageIcon
+  - delay: to
+  - SnakeBody: ImageIcon
   - speedUp: AtomicBoolean
   - snakeHeadXPos: int
   - appleImage: ImageIcon
   - xPos: int
   - yPos: int
   - titleImage: ImageIcon
-  - highScore: String
+  - High score: String
   - arrowImage: ImageIcon
   - shiftImage: ImageIcon
-- 6 Method
-  - **Gameplay()** - Untuk constructor class
-  - **paint(g)** - Untuk desain frame/UI
-  - **drawString(g, text, x, y)** - untuk menampilkan di layar string dengan \n di dalamnya
-  - **actionPerformed(e)** - Digunakkan untuk mengatur pergerakkan ular
-  - **keyPressed(e)** - Untuk mengatur kondisi ketika menekan tombol keyboard
-  - **keyReleased (e)** - Untuk mengatur ketika user lepas/menekan shift
+- 6 Methods
+  - **Gameplay()** - For constructor classes
+  - **paint(g)** - For frame/UI design
+  - **drawString(g, text, x, y)** - to display a string on the screen with \n in it
+  - **actionPerformed(e)** - Used to set the snake's movement
+  - **keyPressed(e)** - To set conditions when pressing keyboard keys
+  - **keyReleased (e)** - To set when user release/press shift
 
 **3. Score** - `Score.java`
 
-- Class untuk mengatur score game
-- 1 Variabel Class
-  - score: int
-- 7 Method
-  - **Score()** - Untuk constructor class
-  - **increaseScore()** - Untuk menambah/increase score
-  - **resetScore()** - Untuk mereset score
-  - **getScore()** - untuk mengembalikan nilai score ke tampilan Gameplay
-  - **getHighScore()** - Fungsi buat ambil HighScore
-  - **sortHighScore()** - untuk mengurutkan high score
-  - **saveNewScore()** - Fungsi buat nulis score baru di file
+- Class to set the score game
+- 1 Variable Class
+  - score: be
+- 7 Methods
+  - **Score()** - For constructor classes
+  - **increaseScore()** - To increase/increase score
+  - **resetScore()** - To reset score
+  - **getScore()** - to return value to Gameplay view
+  - **getHighScore()** - Function to get HighScore
+  - **sortHighScore()** - to sort high scores
+  - **saveNewScore()** - Function to write new score in file
 
 **4. Snake** - `Snake.java`
 
-- Class untuk mengatur snake
-- 9 Variabel Class
+- Class to manage snake
+- 9 Variable Class
   - snakexLength: int []
-  - snakeyLength: int []
+  - snake length: int []
   - lengthOfSnake: int
-  - moves: int
+  - move: to
   - left: boolean
   - right: boolean
-  - up: boolean
-  - down: boolean
+  - top: boolean
+  - bottom: boolean
   - death: boolean
-- 10 Method
-  - **Snake()** - Untuk constructor class
-  - **moveRight()** - Untuk gerak ular ke kanan
-  - **moveLeft()** - Untuk gerak ular ke kiri
-  - **moveUp()** - Untuk gerak ular ke atas
-  - **moveDown()** - Untuk gerak ular ke bawah
-  - **dead()** - Function mati agar tidak mengulang nulis kode berkali-kali
-  - **movementRight()** - Untuk pergerakan ular ke kanan
-  - **movementLeft()** - Untuk pergerakan ular ke kiri
-  - **movementUp()** - Untuk pergerakan ular ke atas
-  - **movementDown()** - Untuk pergerakan ular ke bawah
+- 10 Methods
+  - **Snake()** - For constructor classes
+  - **moveRight()** - To move the snake to the right
+  - **moveLeft()** - To move the snake to the left
+  - **moveUp()** - To move the snake up
+  - **moveDown()** - To move the snake down
+  - **dead()** - Function turns off so as not to repeat writing code many times
+  - **movementRight()** - For snake movement to the right
+  - **movementLeft()** - For snake movement to the left
+  - **movementUp()** - For snake movement up
+  - **movementDown()** - For downward movement of the snake
 
 **5. Apple** - `Apple.java`
 
-- Class untuk mengatur posisi apel ketika game mulai
-- 2 Variabel Class
-  - applexPos: int []
+- Class to set the position of the apple when the game starts
+- 2 Variable Class
+  - applexPos: int[]
   - appleyPos: int []
 - 0 Method
 
@@ -146,32 +146,32 @@ java src/SnakeGame.java
 
 ![UML](/images/UML_Project_Snake.png)
 
-## Notable Assumption and Design App Details
+## Leading Assumptions and App Design Details
 
-- Desain Aplikasi
-  - Board game di desain dengan ukuran 100x100 sel.
-  - Game akan dimulai ketika user menekan SPACEBAR
+- App Design
+  - The game board is designed with a size of 100x100 cells.
+  - Game will start when user press SPACEBAR
 - Score
-  - Permainan dimulai dengan score = 0 dan akan bertambah 1 setiap kali ular memakan apel
-  - Ketika pertama kali program dijalankan, highscore akan = 0
-  - Highscore akan disimpan ketika ular telah dimainkan sampai mati (game over)
-  - Program akan menyimpan 10 highscore tertinggi
-  - Highscore tidak akan hilang walaupun aplikasi sudah ditutup
-  - Score akan tersimpan di `highscore.dat`
+  - The game starts with a score = 0 and will increase by 1 every time you eat an apple
+  - When the program is first run, the highscore will be = 0
+  - High score will be saved when snake has been played to death (game over)
+  - The program will store the 10 highest highscores
+  - Highscore will not disappear even if the application is closed
+  - Score will be saved in `highscore.dat`
 - Snake
-  - Panjang awal ular sebelum dimulai = 5 sel dan akan bertambah 1 sel setiap kali ular memakan apel
-  - Ular akan mati ketika menabrak tembok atau menabrak badannya
-  - Boostspeed ketika memencet SHIFT di keyboard
-  - Tiap kali score mencapai kelipatan 5, pergerakan ular makin cepat  
-  - Boostspeed menyesuaikan kecepatan ular  
+  - The initial length of the snake before it starts = 5 cells and will increase by 1 cell every time it eats an apple
+  - The snake will die when it hits the wall or hits the body
+  - Boostspeed when pressing SHIFT on the keyboard
+  - Every time the score reaches a multiple of 5, the snake moves faster
+   - Boostspeed adjusts the speed of the snake
 - Apple
-  - Apel akan muncul secara random ketika game dimulai
-  - Apel berukuran 1 cell
+   - Apples will appear randomly when the game starts
+   - Apple size 1 cell
 
 ## UI
 
-1. **Sebelum game dimulai**
-   ![Start Game](/images/UI.png)
+1. **Before the game starts**
+    ![Start Game](/images/UI.png)
 
-1. **Setelah game berakhir**
-   ![End Game](/images/UI2.PNG)
+1. **After the game ends**
+    ![End Game](/images/UI2.PNG)
