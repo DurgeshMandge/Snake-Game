@@ -66,7 +66,7 @@ java src/SnakeGame.java
 
 ## Class Used
 
-**1.Main Application** - `SnakeGame.java`
+**1. Main Application** - `SnakeGame.java`
 
 - The main program to handle Display and Gameplay
 
