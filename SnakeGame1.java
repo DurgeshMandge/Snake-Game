@@ -1,8 +1,14 @@
 package src;
 
+
+
 import javax.swing.*;
 
 import java.awt.*;
+
+import java.awt.event.ActionEvent;
+
+import java.awt.event.ActionListener;
 
 import java.awt.event.KeyEvent;
 
@@ -20,7 +26,7 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
     private final int gridSize = 20; // size of each grid square
 
-    private final int canvasWidth =800;
+    private final int canvasWidth = 800;
 
     private final int canvasHeight = 600;
 
@@ -40,9 +46,17 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
     private int distance = 0;
 
+    private int keypressedcnt = 0;
+
+    private int totalKeysStrok = 0;
+
 
 
     private JLabel scoreLabel;
+
+    private JLabel strokeLabel;
+
+    private JLabel bonusLabel; // Label to display bonus message
 
 
 
@@ -64,6 +78,10 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         createScoreLabel();
 
+        createStrokeLabel();
+
+        createBonusLabel(); // Initialize bonus label
+
     }
 
 
@@ -79,6 +97,42 @@ public class SnakeGame1 extends JPanel implements KeyListener {
         scoreLabel.setBounds(10, 10, 200, 30);
 
         add(scoreLabel);
+
+    }
+
+
+
+    private void createStrokeLabel() {
+
+        strokeLabel = new JLabel("Stroke: 0");
+
+        strokeLabel.setForeground(Color.WHITE);
+
+        strokeLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        strokeLabel.setBounds(10, 40, 200, 30);
+
+        add(strokeLabel);
+
+    }
+
+
+
+    private void createBonusLabel() {
+
+        bonusLabel = new JLabel();
+
+        bonusLabel.setForeground(Color.YELLOW);
+
+        bonusLabel.setFont(new Font("Arial", Font.BOLD, 24));
+
+        bonusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        bonusLabel.setBounds(0, 0, canvasWidth, 50);
+
+        bonusLabel.setVisible(false); // Initially invisible
+
+        add(bonusLabel);
 
     }
 
@@ -148,11 +202,15 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
                 newHead.x++;
 
+                distance = distance + 1;
+
                 break;
 
             case "LEFT":
 
                 newHead.x--;
+
+                distance = distance + 1;
 
                 break;
 
@@ -160,33 +218,48 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
                 newHead.y--;
 
+                distance = distance + 1;
+
                 break;
 
             case "DOWN":
 
                 newHead.y++;
 
+                distance = distance + 1;
+
                 break;
 
         }
 
-
+        System.out.println(newHead.x);
 
         snake.add(0, newHead);
 
 
+        // Eats food
 
         if (newHead.equals(food)) {
 
-            if (distance == shortestDist) {
+            if (keypressedcnt <= 2) {
 
-                score += 2;
+                score += 1;
+
+                showBonusMessage(); // Show bonus message if keypressedcnt <= 2
 
             }
 
             score++;
 
+            totalKeysStrok += keypressedcnt;
+
+            keypressedcnt = 0;
+
+
+
             generateFood();
+
+
 
             shortestDist = Math.abs(newHead.x - food.x) + Math.abs(newHead.y - food.y);
 
@@ -202,6 +275,8 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         updateScoreLabel();
 
+        updateStrokeLabel();
+
     }
 
 
@@ -209,6 +284,14 @@ public class SnakeGame1 extends JPanel implements KeyListener {
     private void updateScoreLabel() {
 
         scoreLabel.setText("Score: " + score);
+
+    }
+
+
+
+    private void updateStrokeLabel() {
+
+        strokeLabel.setText("Stroke: " + keypressedcnt);
 
     }
 
@@ -245,6 +328,8 @@ public class SnakeGame1 extends JPanel implements KeyListener {
         JOptionPane.showMessageDialog(this, "Game Over!\nScore: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
 
         score = 0;
+
+        keypressedcnt = 0; // Reset key pressed count
 
         initializeGame();
 
@@ -294,6 +379,10 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
 
+        keypressedcnt++;
+
+
+
         switch (e.getKeyCode()) {
 
             case KeyEvent.VK_LEFT:
@@ -335,6 +424,33 @@ public class SnakeGame1 extends JPanel implements KeyListener {
     @Override
 
     public void keyReleased(KeyEvent e) {}
+
+
+
+    private void showBonusMessage() {
+
+        bonusLabel.setText("Bonus! +1");
+
+        bonusLabel.setVisible(true); // Show the bonus message label
+
+        Timer bonusTimer = new Timer(1000, new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+
+                bonusLabel.setVisible(false); // Hide the bonus message label after 1 second
+
+            }
+
+        });
+
+        bonusTimer.setRepeats(false); // Execute only once
+
+        bonusTimer.start();
+
+
+    }
 
 
 
