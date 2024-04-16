@@ -24,13 +24,13 @@ import java.util.Random;
 
 public class SnakeGame1 extends JPanel implements KeyListener {
 
-    private final int gridSize = 20; // size of each grid square
+    private final int gridSize = 20;
 
     private final int canvasWidth = 800;
 
     private final int canvasHeight = 600;
 
-    private final int gameSpeed = 100; // milliseconds
+    private final int gameSpeed = 100;
 
 
 
@@ -41,6 +41,8 @@ public class SnakeGame1 extends JPanel implements KeyListener {
     private String direction = "RIGHT";
 
     private int score = 0;
+
+    private int highScore = 0;
 
     private int shortestDist = 10;
 
@@ -54,9 +56,11 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
     private JLabel scoreLabel;
 
+    private JLabel highScoreLabel;
+
     private JLabel strokeLabel;
 
-    private JLabel bonusLabel; // Label to display bonus message
+    private JLabel bonusLabel;
 
 
 
@@ -78,9 +82,11 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         createScoreLabel();
 
+        createHighScoreLabel();
+
         createStrokeLabel();
 
-        createBonusLabel(); // Initialize bonus label
+        createBonusLabel();
 
     }
 
@@ -97,6 +103,22 @@ public class SnakeGame1 extends JPanel implements KeyListener {
         scoreLabel.setBounds(10, 10, 200, 30);
 
         add(scoreLabel);
+
+    }
+
+
+
+    private void createHighScoreLabel() {
+
+        highScoreLabel = new JLabel("High Score: 0");
+
+        highScoreLabel.setForeground(Color.WHITE);
+
+        highScoreLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        highScoreLabel.setBounds(canvasWidth - 200, 10, 200, 30);
+
+        add(highScoreLabel);
 
     }
 
@@ -130,7 +152,7 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         bonusLabel.setBounds(0, 0, canvasWidth, 50);
 
-        bonusLabel.setVisible(false); // Initially invisible
+        bonusLabel.setVisible(false);
 
         add(bonusLabel);
 
@@ -232,28 +254,65 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         }
 
-        System.out.println(newHead.x);
+
 
         snake.add(0, newHead);
 
 
-        // Eats food
 
         if (newHead.equals(food)) {
 
-            if (keypressedcnt <= 2) {
+            boolean isMovingInSameDirection = false;
+
+
+
+            if (snake.size() > 1) {
+
+                Point neck = snake.get(1);
+
+                if ((direction.equals("UP") && head.y > neck.y) || 
+
+                    (direction.equals("DOWN") && head.y < neck.y)) {
+
+                    isMovingInSameDirection = true;
+
+                }
+
+            }
+
+
+
+            if (isMovingInSameDirection && keypressedcnt <= 1) {
 
                 score += 1;
 
-                showBonusMessage(); // Show bonus message if keypressedcnt <= 2
+                showBonusMessage();
+
+            } else if (!isMovingInSameDirection && keypressedcnt <= 2) {
+
+                score += 1;
+
+                showBonusMessage();
 
             }
+
+
 
             score++;
 
             totalKeysStrok += keypressedcnt;
 
             keypressedcnt = 0;
+
+
+
+            if (score > highScore) {
+
+                highScore = score;
+
+                updateHighScoreLabel();
+
+            }
 
 
 
@@ -281,9 +340,19 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
 
 
+
+
     private void updateScoreLabel() {
 
         scoreLabel.setText("Score: " + score);
+
+    }
+
+
+
+    private void updateHighScoreLabel() {
+
+        highScoreLabel.setText("High Score: " + highScore);
 
     }
 
@@ -303,7 +372,7 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         if (head.x < 0 || head.x >= canvasWidth / gridSize || head.y < 0 || head.y >= canvasHeight / gridSize) {
 
-            return true; // collision with walls
+            return true;
 
         }
 
@@ -311,7 +380,7 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
             if (head.equals(snake.get(i))) {
 
-                return true; // collision with itself
+                return true;
 
             }
 
@@ -329,7 +398,7 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
         score = 0;
 
-        keypressedcnt = 0; // Reset key pressed count
+        keypressedcnt = 0;
 
         initializeGame();
 
@@ -429,9 +498,9 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
     private void showBonusMessage() {
 
-        bonusLabel.setText("Bonus! +1");
+        bonusLabel.setText("+1 Bonus Received!");
 
-        bonusLabel.setVisible(true); // Show the bonus message label
+        bonusLabel.setVisible(true);
 
         Timer bonusTimer = new Timer(1000, new ActionListener() {
 
@@ -439,16 +508,15 @@ public class SnakeGame1 extends JPanel implements KeyListener {
 
             public void actionPerformed(ActionEvent e) {
 
-                bonusLabel.setVisible(false); // Hide the bonus message label after 1 second
+                bonusLabel.setVisible(false);
 
             }
 
         });
 
-        bonusTimer.setRepeats(false); // Execute only once
+        bonusTimer.setRepeats(false);
 
         bonusTimer.start();
-
 
     }
 
